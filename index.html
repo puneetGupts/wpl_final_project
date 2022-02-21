@@ -28,23 +28,47 @@
   </head>
   <body >
     <!-- Header Nav bar -->
-    <nav class="navbar navbar-light bg-gray">
+    <nav class="navbar navbar-expand-lg navbar-light col-light">
+      <div class="container-fluid">
+
       <a class="navbar-brand" href="#">
-        <img
-          src="/docs/4.0/assets/brand/bootstrap-solid.svg"
+        <!-- <img
+          src="https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
           width="30"
           height="30"
           class="d-inline-block align-top"
-          alt=""
-        />
-        Geek Hunt
+          alt="" -->
+          <h6><span class="ml-3" style="
+            font-family: 'Allerta Stencil', sans-serif;
+font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
       </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>  
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div> 
+      </div>
     </nav>
     <!-- Login -->
     <div
-      class="container mt-5 pt-0 d-flex flex-column flex-lg-row justify-content-evenly mb-5 bg-img"
+      class="container mt-5 pt-0 d-flex flex-column flex-lg-row justify-content-evenly mb-5 "
     >
       <!-- heading -->
+      <div >
       <div class="text-center text-lg-start mt-0 pt-0 mt-lg-5 pt-lg-5">
         <h1 class="fw-bold fs-0"><span style="
           font-family: 'Allerta Stencil', sans-serif;
@@ -54,6 +78,7 @@
           GeekHunt helps you connect and grow with the tutors in your life.
         </p>
       </div>
+    </div>
       <!-- form card -->
       <div style="max-width: 28rem; width: 100%">
         <!-- login form -->
@@ -61,7 +86,6 @@
         <div class="bg-white shadow rounded p-2 input-group-lg">        
           <div class="flex-column flex-lg-row">
             <h2 class="d-flex align-items-center justify-content-center text-muted "><i class="fas fa-lock m-3" style="font-size: 2rem"></i>
-
                Sign In</h2>
           </div>
 
@@ -76,7 +100,7 @@
             placeholder="Password"
           />
           <a href="./feed.html"
-            ><button class="btn btn-primary w-100 my-3">Log In</button></a
+            ><button class="btn btn-primary w-100 my-3 col-dark">Log In</button></a
           >
           <a href="#" class="text-decoration-none text-center"
             ><p>Forgotten password?</p></a
@@ -279,19 +303,10 @@
           </div>
           <!-- modal end -->
         </div>
-        <!-- tag -->
-        <!-- <div class="my-5 pb-5 text-center">
-          <p class="fw-bold">
-            <a href="#" class="text-decoration-none text-dark"
-              >Createa a Page</a
-            >
-            <span class="fw-normal">for a celebrity, band or business.</span>
-          </p>
-        </div> -->
       </div>
     </div>
     <!-- Footer -->
-    <footer class="bg-gray text-muted d-flex ">
+    <footer class="col-light text-muted d-flex ">
       <div class="container">
         <!-- <div class="d-flex flex-wrap"></div> -->
         <!-- language -->
@@ -303,17 +318,10 @@
           <p class="mx-2 fs-7 mb-0">Home</p>
         </div>
         <hr />
-        <!-- actions -->
-        <!-- <div class="d-flex flex-wrap">
-          <p class="mx-2 fs-7 mb-0">Sign Up</p>
-          <p class="mx-2 fs-7 mb-0">Login</p>
-          <p class="mx-2 fs-7 mb-0">About Us</p> -->
-        <!-- <p class="mx-2 fs-7 mb-0">Facebook Lite</p>
-          <p class="mx-2 fs-7 mb-0">Watch</p> -->
       </div>
       <!-- copy -->
       <div class="mt-4 mx-2 text-center">
-          <p class="fs-7">Flexbook &copy; 2021</p>
+          <p class="fs-7">GeekHunt &copy; 2021</p>
         </div>
       </div>
     </footer>
