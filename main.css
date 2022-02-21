@@ -9,13 +9,13 @@
 }
 /* nav button */
 .nav__btn button:hover {
-  background: #f0f2f5 !important;
+  background: #d2edf2 !important;
 }
 .nav__btn button:hover i {
-  color: #0d6efd !important;
+  color: #009bb5 !important;
 }
 .nav__btn-active i {
-  color: #0d6efd !important;
+  color: #009bb5 !important;
 }
 .nav__btn-active {
   position: relative;
@@ -37,4 +37,31 @@
     bottom: 0;
     width: 100%;
   }
+}
+/* .bgimg{
+
+} */
+/* col-dark {
+  color: #326081 !important;
+}
+
+col-med {
+  color: #009bb5 !important;
+}*/
+.col-dark {
+  color: #326081 !important;
+}
+.col-med {
+  color: #009bb5 !important;
+}
+.col-light {
+  background-color: #d2edf2 !important;
+}
+.btn-primary {
+  background-color: #009bb5 !important;
+}
+body {
+  background-image: url("bg.jpg");
+  background-color: #cccccc;
+  background-size: cover;
 }
