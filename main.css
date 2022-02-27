@@ -227,5 +227,8 @@ body {
       margin: 0px;
   }
   
+  .modal-footer{
+    justify-content: center;
+  }
   
   

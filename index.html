@@ -25,6 +25,7 @@
     <!-- main style -->
     <link rel="stylesheet" href="./main.css" />
     <title>GeekHunt</title>
+    <link rel="icon" href="img2.png" type = "image/x-icon">
   </head>
   <body >
     <!-- Header Nav bar -->
@@ -32,12 +33,14 @@
       <div class="container-fluid">
 
       <a class="navbar-brand" href="#">
-        <!-- <img
-          src="https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+         <img
+          src="img2.png"
           width="30"
           height="30"
           class="d-inline-block align-top"
-          alt="" -->
+          alt=""
+        >
+      </a>
           <h6><span class="ml-3" style="
             font-family: 'Allerta Stencil', sans-serif;
 font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
@@ -183,17 +186,23 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                         class="form-control my-3"
                         placeholder="Password"
                       />
+                      <input
+                        type="password"
+                        class="form-control my-3"
+                        placeholder="Confirm Password"
+                      />
 
                       <!-- Birthday and Gender-->
                       <div class="row">
                         <div class="col">
                           <span class="text-muted fs-7"
                                 >Date of birth
+                                
                                 <i
                                   class="fas fa-question-circle"
-                                  data-bs-toggle="popover"
-                                  type="button"
-                                  data-bs-content="Select your date of birth in a form of MM-DD-YY"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="right"
+                                  title="Select your date of birth in a form of MM-DD-YY"
                                 ></i>
                               </span>
                               <input type="date" id="birthday" name="birthday">
@@ -203,16 +212,15 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                                 >Gender
                                 <i
                                   class="fas fa-question-circle"
-                                  data-bs-toggle="popover"
-                                  type="button"
-                                  data-bs-content="Select from given options"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="right"
+                                  title="Select from given options"
                                 ></i
                               ></span>
                               <select class="form-select" style="border: none; border-bottom: 1px solid black;" >
                                 <option hidden disabled selected value>  </option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                                <option value="Custom">Custom</option>
                               </select>
                         </div>
                       </div>
@@ -284,6 +292,11 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                         class="form-control my-3"
                         placeholder="Password"
                       />
+                      <input
+                        type="password"
+                        class="form-control my-3"
+                        placeholder="Confirm Password"
+                      />
                       <!-- Birthday and Gender-->
                       <div class="row">
                         <div class="col">
@@ -291,9 +304,9 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                                 >Date of birth
                                 <i
                                   class="fas fa-question-circle"
-                                  data-bs-toggle="popover"
-                                  type="button"
-                                  data-bs-content="Select your date of birth in a form of MM-DD-YY"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="right"
+                                  title="Select your date of birth in a form of MM-DD-YY"
                                 ></i>
                               </span>
                               <input type="date" id="birthday" name="birthday">
@@ -303,17 +316,17 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                                 >Gender
                                 <i
                                 class="fas fa-question-circle"
-                                data-bs-toggle="popover"
-                                type="button"
-                                data-bs-content="Select from given options"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="right"
+                                title="Select from given options"
                               ></i
                             >
+                            
                                </span>
                               <select class="form-select" style="border: none; border-bottom: 1px solid black;" >
                                 <option hidden disabled selected value>  </option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                                <option value="Custom">Custom</option>
                               </select>
                         </div>
                       </div>
@@ -323,9 +336,9 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                                 > About Me
                                 <i
                                   class="fas fa-question-circle"
-                                  data-bs-toggle="popover"
-                                  type="button"
-                                  data-bs-content="Previous experience in a field of Teaching?"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="right"
+                                  title="Previous experience in a field of Teaching?"
                                 ></i
                               >
                               </span>
@@ -342,9 +355,9 @@ font-size: 2rem;"> Geek<em style="color:#009bb5">Hunt</em></span></h6>
                                   > What makes you interested in working with us?
                                   <i
                                     class="fas fa-question-circle"
-                                    data-bs-toggle="popover"
-                                    type="button"
-                                    data-bs-content="Motivation?"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    title="Motivation?"
                                   ></i
                                 >
                                 </span>
