@@ -1,0 +1,64 @@
+@import "C:/Users/punee/OneDrive/Desktop/wpl_final_project/react-app/wpl/src/mixins.scss";
+//Colors
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-carbon: #333333;
+$color-steel-wool: #777777;
+$color-gray: #808080;
+$color-river-fountain: #228891;
+$color-super-silver: #eeeeee;
+$color-decor-yellow: #f6ba00;
+$color-boltgun-metal: #393939;
+
+//Fonts
+$pt-sans: "PT Sans", sans-serif;
+$roboto: "Roboto", sans-serif;
+
+.filter_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0px 10px;
+  .tutors_tab {
+    display: flex;
+    align-items: center;
+  }
+  p {
+    color: rgb(51, 51, 51);
+    font-family: $roboto;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.7em;
+    margin: 0px -4px 0px 4px;
+    padding-left: 0px;
+    padding-right: 16px;
+    text-align: right;
+    white-space: nowrap;
+  }
+  a {
+    font: 300 14px $roboto;
+    font-weight: 300;
+    color: $color-carbon;
+    border: none;
+    background: $color-white;
+    cursor: pointer;
+    margin-right: 10px;
+    text-decoration: none;
+    @include media(mobil) {
+      display: none;
+    }
+  }
+  .search {
+    padding: 10px 14px;
+    width: 200px;
+    border-radius: 3px;
+    border: 1px solid $color-super-silver;
+    outline: 0;
+    font: $pt-sans;
+  }
+
+  .active {
+    color: $color-river-fountain;
+    font-weight: bold;
+  }
+}
