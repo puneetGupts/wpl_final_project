@@ -12,6 +12,7 @@ import {
   Routes,
   Route,Navigate
 } from "react-router-dom";
+import Favorites from "./favorites";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
         <Route exact="true" path="/about" element={<About/>} />
         <Route exact="true" path="/register" element={<Register/>} />
         <Route exact="true" path="/studentHome" element={<StudentHome/>} />
+        <Route exact="true" path="/favorite" element={<Favorites/>} />
         <Route path="*" element={<Navigate to="/" replace />}
     />        
         </Routes>
