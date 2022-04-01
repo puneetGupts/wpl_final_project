@@ -1,15 +1,15 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import classNames from "classnames";
-// import styles from "../filterTop/styleIndex.scss"
+import styles from "./style.module.scss"
 
 
 function FilterTop({ handleKeyUp, status }) {
   return (
-    <div className="filter_top">
-      <div className="tutors_tab">
+    <div className={styles.filter_top}>
+      <div className={styles.tutors_tab}>
         <p>Find a Tutor</p>
-        <div className="search_tutor_tab">
+        <div className={styles.search_tutor_tab}>
           <NavLink to="/studentHome">
           <a
               className={classNames({
@@ -33,7 +33,7 @@ function FilterTop({ handleKeyUp, status }) {
       <input
         type="text"
         placeholder="Search Tutor Name..."
-        className="search"
+        className={styles.search}
         onKeyUp={(event) => handleKeyUp(event.target.value)}
       />
     </div>

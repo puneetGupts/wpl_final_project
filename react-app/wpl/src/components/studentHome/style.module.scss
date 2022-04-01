@@ -1,0 +1,23 @@
+@import "../../assets/common/variables";
+@import "../../assets/common/mixins";
+
+.cardsWrapper {
+  margin: 30px 0;
+  width: 100%;
+  display: flex;
+  .card_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    // margin: 0 -15px;
+    margin-bottom: 43px;
+    @include media(mobil) {
+      margin: 0;
+    }
+  }
+  // .cards {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-flow: row wrap;
+  //   justify-content: flex-start;
+  // }
+}

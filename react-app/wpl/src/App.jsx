@@ -6,7 +6,8 @@ import SignIn from "./components/signIn";
 import About from "./components/about";
 import Register from "./components/register";
 import StudentHome from "./components/studentHome";
-import Navbar from "./components/navbar";
+import Detail from "./components/detail";
+// import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import {
   Routes,
@@ -16,13 +17,14 @@ import Favorites from "./favorites";
 function App() {
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
       <Routes>
         <Route exact="true" path="/" element={<SignIn />} />
         <Route exact="true" path="/about" element={<About/>} />
         <Route exact="true" path="/register" element={<Register/>} />
         <Route exact="true" path="/studentHome" element={<StudentHome/>} />
         <Route exact="true" path="/favorite" element={<Favorites/>} />
+        <Route exact="true" path="/detail" element={<Detail/>} />
         <Route path="*" element={<Navigate to="/" replace />}
     />        
         </Routes>

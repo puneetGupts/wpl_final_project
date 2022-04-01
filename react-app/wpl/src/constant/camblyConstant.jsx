@@ -13,7 +13,7 @@ import eleven from "../images/11.png"
 const CamblyConstants = {
     HEADER: [
       {
-        slug: "/#/tutors",
+        slug: "/studentHome",
         value: "Tutors",
       },
       {
@@ -92,6 +92,10 @@ const CamblyConstants = {
           "Intermediate",
           "Advanced",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 2,
@@ -117,6 +121,10 @@ const CamblyConstants = {
           "Scholarly and Knowledgeable",
           "Beginner",
         ],
+        education : "The university of South Florida",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 3,
@@ -143,6 +151,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of South Florida",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 4,
@@ -168,6 +180,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 5,
@@ -194,6 +210,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of South Florida",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 6,
@@ -220,6 +240,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 7,
@@ -246,6 +270,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 8,
@@ -270,6 +298,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 9,
@@ -296,6 +328,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 10,
@@ -322,6 +358,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
       {
         id: 11,
@@ -347,6 +387,10 @@ const CamblyConstants = {
           "Beginner",
           "Intermediate",
         ],
+        education : "The university of Texas at Dallas",
+        certification: "TOEFL",
+        teachingStyle: "Fun, Relexed, Coversational style",
+        workEx :"I am teaching English in Harmony school",
       },
     ],
   
