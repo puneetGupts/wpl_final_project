@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from "../navbar";
+import Footer from '../footer';
 import styles from "./style.module.scss"
 // import {Link} from "react-router-dom";
 function SignIn() {
@@ -47,20 +48,21 @@ function SignIn() {
             {/* create form */}
             <hr />
             <div className="text-center my-4">
-            <button
-              className="btn btn-success btn-lg"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#createModal"
-            >
-              Create New Account
-            </button>
-          </div>
+              <button
+                className="btn btn-success btn-lg"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#createModal"
+              >
+                Create New Account
+              </button>
+            </div>
 
           </div>
 
         </div>
-      </div></>
+      </div>
+      <Footer/></>
   )
 }
 

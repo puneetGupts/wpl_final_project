@@ -8,7 +8,7 @@ import Register from "./components/register";
 import StudentHome from "./components/studentHome";
 import Detail from "./components/detail";
 // import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
 import {
   Routes,
   Route,Navigate
@@ -28,7 +28,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />}
     />        
         </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }

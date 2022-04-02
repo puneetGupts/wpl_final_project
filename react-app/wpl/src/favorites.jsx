@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import CamblyConstants from "./constant/camblyConstant.jsx";
+import Layout from './components/layout';
 import Card from './components/card';
 import FilterTop from './components/filterTop';
 import setFavorite from "./helpers";
@@ -19,36 +20,39 @@ function Favorites() {
   };
   return (
     <>
-      <section className={styles.banner}>
-        <Container>
-          <Banner />
-        </Container>
-      </section>
+      <Layout>
+        <main>
+          <section className={styles.banner}>
+            <Container>
+              <Banner />
+            </Container>
+          </section>
 
-      <section className={styles.filterTopWrapper}>
-        <Container>
-          <FilterTop
-            handleKeyUp={(value) => handleSearch(value)}
-            status="favorite"
-          />
-        </Container>
-      </section>
+          <section className={styles.filterTopWrapper}>
+            <Container>
+              <FilterTop
+                handleKeyUp={(value) => handleSearch(value)}
+                status="favorite"
+              />
+            </Container>
+          </section>
 
-      <section className={styles.cardsWrapper}>
-          <Container>
-            <div className={styles.card_wrapper}>
-              {favTutors &&
-                favTutors.map((tutor) => (
-                  <Card
-                    tutor={tutor}
-                    favTutor={favTutors}
-                    onChildClick={setFavorite}
-                  />
-                ))}
-            </div>
-          </Container>
-        </section>
-
+          <section className={styles.cardsWrapper}>
+            <Container>
+              <div className={styles.card_wrapper}>
+                {favTutors &&
+                  favTutors.map((tutor) => (
+                    <Card
+                      tutor={tutor}
+                      favTutor={favTutors}
+                      onChildClick={setFavorite}
+                    />
+                  ))}
+              </div>
+            </Container>
+          </section>
+        </main>
+      </Layout>
     </>
   )
 }

@@ -60,7 +60,7 @@ function Card({tutor,onChildClick}) {
                     <div className={styles.card_grid_btn_wrapper}>
                         <button className={styles.card_grid_btn}>
                             <NavLink className="navlink"
-                                to="/detail"  state={{props: tutor}}
+                                to="/detail" state={{props: tutor}}
                             >
                                 PROFILE
                             </NavLink></button>

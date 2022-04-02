@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import bell from "../../images/bell.png";
 import tick from "../../images/tick.png";
+import styles from "./style.module.scss";
 
 function Notifications() {
     const ref = useRef();
@@ -20,20 +21,20 @@ function Notifications() {
     }, [isMenuOpen]);
 
   return (
-    <div className="notification">
-      <div onClick={() => setIsMenuOpen(true)} className="bell">
+    <div className={styles.notification}>
+      <div onClick={() => setIsMenuOpen(true)} className={styles.bell}>
         <img src={bell} alt="bell icon" width={20} height={20} />
       </div>
       {isMenuOpen && (
-        <div className="notification_info" ref={ref}>
+        <div className={styles.notification_info} ref={ref}>
           <img src={tick} alt="tick icon" width={85} height={85} />
-          <div className="notification_text">
+          <div className={styles.notification_text}>
             <span>You're all caught up!</span>
             <p>No new notifications</p>
           </div>
         </div>
       )}
-    </div>  )
+    </div>  );
 }
 
 export default Notifications

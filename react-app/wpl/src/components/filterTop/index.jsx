@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink ,Link} from 'react-router-dom';
 import classNames from "classnames";
 import styles from "./style.module.scss"
 
@@ -10,7 +10,7 @@ function FilterTop({ handleKeyUp, status }) {
       <div className={styles.tutors_tab}>
         <p>Find a Tutor</p>
         <div className={styles.search_tutor_tab}>
-          <NavLink to="/studentHome">
+          <Link to="/studentHome">
           <a
               className={classNames({
                 ["active"]: status === "homepage",
@@ -18,8 +18,8 @@ function FilterTop({ handleKeyUp, status }) {
             >
               All
             </a>
-          </NavLink>
-          <NavLink to="/favorite">
+          </Link>
+          <Link to="/favorite">
           <a
               className={classNames({
                 ["active"]: status === "favorite",
@@ -27,7 +27,7 @@ function FilterTop({ handleKeyUp, status }) {
             >
               Favourite
             </a>
-          </NavLink>          
+          </Link>          
         </div>
       </div>
       <input
