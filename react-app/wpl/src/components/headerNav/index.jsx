@@ -8,7 +8,7 @@ function headerNav() {
   return (
     <nav className={styles.navbar}>
       {CamblyConstants.HEADER.map((item) => (
-        <NavLink href={item.slug} key={shortid.generate()}>
+        <NavLink to={item.slug} key={shortid.generate()}>
           <a>{item.value}</a>
         </NavLink>
       ))}

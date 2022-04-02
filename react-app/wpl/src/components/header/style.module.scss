@@ -1,0 +1,26 @@
+@import "../../assets/common/variables";
+@import "../../assets/common/mixins";
+
+.header {
+  background-color: $color-navbar;
+  height: 64px;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.1);
+
+  .header_wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-family: $pt-sans;
+    height: 64px;
+    justify-content: space-between;
+  }
+
+  .left_side {
+    display: flex;
+  }
+
+  .right_side {
+    display: flex;
+    align-items: center;
+  }
+}

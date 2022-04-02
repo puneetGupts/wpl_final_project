@@ -34,9 +34,6 @@ function CalendarInfo() {
       {isMenuOpen && (
         <nav className={styles.settings_menu} ref={ref}>
           <NavLink to="/">
-            <a className={styles.menu_item}> Subscription </a>
-          </NavLink>
-          <NavLink to="/">
             <a className={styles.menu_item}> Account Settings </a>
           </NavLink>
           <NavLink to="/">
@@ -44,12 +41,6 @@ function CalendarInfo() {
           </NavLink>
           <NavLink to="/">
             <a className={styles.menu_item}> Calendar </a>
-          </NavLink>
-          <NavLink to="/">
-            <a className={styles.menu_item}> Free Minutes </a>
-          </NavLink>
-          <NavLink to="/">
-            <a className={styles.menu_item}> Referral Code </a>
           </NavLink>
           <NavLink to="/">
             <a className={styles.menu_item}> Sign Out </a>
