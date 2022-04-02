@@ -1,0 +1,46 @@
+@import "../../assets/common/variables";
+@import "../../assets/common/mixins";
+
+.notification {
+  margin: 0 10px;
+  position: relative;
+  @include media(mobil) {
+    display: none;
+  }
+  .bell {
+    cursor: pointer;
+  }
+
+  .notification_info {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: row;
+    left: -200px;
+    padding: 10px;
+    position: absolute;
+    top: 40px;
+    width: 250px;
+    z-index: 999;
+  }
+
+  .notification_text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+  }
+
+  span {
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  p {
+    color: $color-black;
+    margin: 0;
+    opacity: 0.5;
+  }
+}
