@@ -1,0 +1,31 @@
+@import "../../assets/common/variables";
+@import "../../assets/common/mixins";
+
+.list_wrapper {
+  width: 100%;
+  @include media(tablet) {
+    width: 700px;
+  }
+  @include media(wide) {
+    width: 900px;
+  }
+
+  h3 {
+    font: bold 25px $pt-sans;
+    margin-bottom: 0;
+  }
+
+  p {
+    font: normal 16px $pt-sans;
+
+    &.language {
+      border: 1px solid;
+      width: max-content;
+      padding: 5px;
+      padding-bottom: 20px;
+      border-radius: 16px;
+      height: 19px;
+      font-size: 13px;
+    }
+  }
+}
