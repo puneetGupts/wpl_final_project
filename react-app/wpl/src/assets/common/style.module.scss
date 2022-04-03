@@ -31,7 +31,7 @@
   .card_wrapper {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
+    // margin: 0 -15px;
 
     @include media(mobil) {
       margin: 0;

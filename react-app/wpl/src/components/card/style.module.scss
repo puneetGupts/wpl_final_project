@@ -20,7 +20,6 @@
     min-width: 351px;
   }
 }
-
 .card_grid_header {
   display: flex;
   .card_grid_title {
@@ -67,9 +66,11 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
+    @include media(mobil) {
+      position: initial;
+    }
   }
 }
-
 .card_grid_body {
   display: flex;
   flex-direction: column;

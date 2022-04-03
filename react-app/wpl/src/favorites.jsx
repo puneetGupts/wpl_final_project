@@ -20,8 +20,8 @@ function Favorites() {
   };
   return (
     <>
-      <Layout>
         <main>
+        <Layout>
           <section className={styles.banner}>
             <Container>
               <Banner />
@@ -51,8 +51,8 @@ function Favorites() {
               </div>
             </Container>
           </section>
+          </Layout>
         </main>
-      </Layout>
     </>
   )
 }
