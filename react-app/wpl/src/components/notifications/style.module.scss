@@ -5,7 +5,7 @@
   margin: 0 10px;
   position: relative;
   @include media(mobil) {
-    display: none;
+    // display: none;
   }
   .bell {
     cursor: pointer;
