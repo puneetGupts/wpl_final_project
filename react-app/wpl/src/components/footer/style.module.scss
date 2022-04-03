@@ -66,8 +66,13 @@
 .footer {
   width: 100%;
   bottom: 0;
+  margin-top: auto;
+
   // position: fixed;
   // background-color: $color-super-silver;
+  // @include media(pre-wide) {
+  //   display: flex;
+  // }
   background-color: $color-navbar;
   display: flex;
   .footer_wrapper {
