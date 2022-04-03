@@ -1,0 +1,73 @@
+[
+    {
+      "id": 1,
+      "slug": "Tomas-L",
+      "name": "Tomas L.",
+      "badge": "https://www.cambly.com/static/images/country-flag-icons/US.png",
+      "location": "San Diego, USA",
+      "info": "Architect- ESL teacher",
+      "video":
+        "https://d3um8n5v1w9jhj.cloudfront.net/15718351/8344a551-0aad-4c77-a4e6-a4cd9534b7e2/archive.mp4?Expires=1643821322&Signature=Zoa7U4QywSag2nqVHsDNHl5EugAVD-T8JFQbXHyOd5Ug~rMnQVHX8KRQO1eN-yWpVb40AnXLKPVgFwjSzgFUSlnI7~fcKnau69n0gzovJL98lNHDbWV1dPrnkgenJEDqE~aBQ2gRFbGjRyZzZa1Nns6r-xii-gihGpy~JJKpBtMfi2bEw1Ne6hcuIBgexiqj7I-7OHj5y3MzXZdXxp0MWeAmI4iBsFgJSbrO4ONrRN4AEoBTNqeiHmW7ygo6zEipFXtT1MpSi4Qn~oIIlQf41JKvhz14xhDt-nFaCBkWCE0KQW~tgCt-Ij86LA51oGJWf1GLF1p86HTMIvwq7e91QA__&Key-Pair-Id=APKAIKYVFETQQHXNXQ5Q",
+      "avatar":
+        "https://camblyavatars.s3.amazonaws.com/5a76f28a66029b0026708224s200?h=9ae964f976073f0d4017c40fafd7a963",
+      "about": "sports, art, culture, ancient history, etc,",
+      "languages": "English (Native: USA Accent)",
+      "chats": "1,000+ chats",
+      "personalInfo": [
+        "North American Accent",
+        "Kind and Patient",
+        "Fun and Gregarious",
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ],
+      "education" : "The University",
+    },
+    {
+      "id": 1,
+      "slug": "Tomas-L",
+      "name": "Tomas L.",
+      "badge": "https://www.cambly.com/static/images/country-flag-icons/US.png",
+      "location": "San Diego, USA",
+      "info": "Architect- ESL teacher",
+      "video":
+        "https://d3um8n5v1w9jhj.cloudfront.net/15718351/8344a551-0aad-4c77-a4e6-a4cd9534b7e2/archive.mp4?Expires=1643821322&Signature=Zoa7U4QywSag2nqVHsDNHl5EugAVD-T8JFQbXHyOd5Ug~rMnQVHX8KRQO1eN-yWpVb40AnXLKPVgFwjSzgFUSlnI7~fcKnau69n0gzovJL98lNHDbWV1dPrnkgenJEDqE~aBQ2gRFbGjRyZzZa1Nns6r-xii-gihGpy~JJKpBtMfi2bEw1Ne6hcuIBgexiqj7I-7OHj5y3MzXZdXxp0MWeAmI4iBsFgJSbrO4ONrRN4AEoBTNqeiHmW7ygo6zEipFXtT1MpSi4Qn~oIIlQf41JKvhz14xhDt-nFaCBkWCE0KQW~tgCt-Ij86LA51oGJWf1GLF1p86HTMIvwq7e91QA__&Key-Pair-Id=APKAIKYVFETQQHXNXQ5Q",
+      "avatar":
+        "https://camblyavatars.s3.amazonaws.com/5a76f28a66029b0026708224s200?h=9ae964f976073f0d4017c40fafd7a963",
+      "about": "sports, art, culture, ancient history, etc,",
+      "languages": "English (Native: USA Accent)",
+      "chats": "1,000+ chats",
+      "personalInfo": [
+        "North American Accent",
+        "Kind and Patient",
+        "Fun and Gregarious",
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ]
+    },
+    {
+      "id": 1,
+      "slug": "Tomas-L",
+      "name": "Tomas L.",
+      "badge": "https://www.cambly.com/static/images/country-flag-icons/US.png",
+      "location": "San Diego, USA",
+      "info": "Architect- ESL teacher",
+      "video":
+        "https://d3um8n5v1w9jhj.cloudfront.net/15718351/8344a551-0aad-4c77-a4e6-a4cd9534b7e2/archive.mp4?Expires=1643821322&Signature=Zoa7U4QywSag2nqVHsDNHl5EugAVD-T8JFQbXHyOd5Ug~rMnQVHX8KRQO1eN-yWpVb40AnXLKPVgFwjSzgFUSlnI7~fcKnau69n0gzovJL98lNHDbWV1dPrnkgenJEDqE~aBQ2gRFbGjRyZzZa1Nns6r-xii-gihGpy~JJKpBtMfi2bEw1Ne6hcuIBgexiqj7I-7OHj5y3MzXZdXxp0MWeAmI4iBsFgJSbrO4ONrRN4AEoBTNqeiHmW7ygo6zEipFXtT1MpSi4Qn~oIIlQf41JKvhz14xhDt-nFaCBkWCE0KQW~tgCt-Ij86LA51oGJWf1GLF1p86HTMIvwq7e91QA__&Key-Pair-Id=APKAIKYVFETQQHXNXQ5Q",
+      "avatar":
+        "https://camblyavatars.s3.amazonaws.com/5a76f28a66029b0026708224s200?h=9ae964f976073f0d4017c40fafd7a963",
+      "about": "sports, art, culture, ancient history, etc,",
+      "languages": "English (Native: USA Accent)",
+      "chats": "1,000+ chats",
+      "personalInfo": [
+        "North American Accent",
+        "Kind and Patient",
+        "Fun and Gregarious",
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ]
+    }
+]
+    
