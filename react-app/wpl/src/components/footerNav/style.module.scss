@@ -1,0 +1,31 @@
+@import "../../assets/common/variables";
+@import "../../assets/common/mixins";
+
+.navbar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  @include media(mobil) {
+    display: none;
+  }
+  @include media(only-tablet) {
+    display: none;
+  }
+  a {
+    box-sizing: border-box;
+    color: $color-black;
+    flex-shrink: 0;
+    font-family: $pt-sans;
+    font-size: 13px;
+    font-weight: 600;
+    max-width: 264px;
+    min-width: 72px;
+    opacity: 0.6;
+    overflow: hidden;
+    padding: 6px 12px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    white-space: normal;
+  }
+}
