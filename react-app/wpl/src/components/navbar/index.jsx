@@ -9,7 +9,7 @@ function Navbar() {
         >
           <NavLink activeclassname="menu_active" className="navbar-brand" to="/">
             <img
-              src="img2.png"
+              src="logo.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
