@@ -20,7 +20,7 @@ function Header({}) {
             <div className={styles.left_side}>
               <Link to="/">
                 <a className="logo">
-                <img src="img2.png" alt="" width="30" height="30" 
+                <img src="logo.png" alt="" width="30" height="30" 
                 className="d-inline-block align-top"/>
                 </a>
               </Link>
