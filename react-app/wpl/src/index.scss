@@ -4,6 +4,13 @@
 @import "./assets/common/mixins.scss";
 @import "./assets/common/variables.scss";
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .bg-gray {
   background-color: #f0f2f5;
 }
