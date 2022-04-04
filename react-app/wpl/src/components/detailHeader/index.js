@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./style.module.scss";
 import CalenderInfo from "../calenderInfo";
+import {  NavLink } from 'react-router-dom'
 
 function DetailHeader({ name, badge, location, avatar }) {
   return (
@@ -14,9 +15,19 @@ function DetailHeader({ name, badge, location, avatar }) {
             <p>{location}</p>
           </div>
         </div>
-        <div className={styles.calendar}>
-          <CalenderInfo />
-        </div>
+        {/*<div className={styles.calendar}>
+          <NavLink className="navlink"
+                                to="/schedule"
+                            >
+                                Schedule
+                            </NavLink>
+  </div>*/}
+        <button className="card_grid_btn">
+                            <NavLink className="navlink"
+                                to="/schedule"
+                            >
+                                Schedule
+                            </NavLink></button>
       </div>
     </>
   );
