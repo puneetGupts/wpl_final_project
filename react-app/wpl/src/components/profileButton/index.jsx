@@ -1,14 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./style.module.scss";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 // import avatar from "../../src/assets/img/avatar.png";
 import avatar from "../../images/avatar.png";
 
 function CalendarInfo() {
   const ref = useRef();
-
+  const navigate=useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const[userExist,setUserExist]=useState(true);
+  // useEffect(()=>{
+  //   if(userExist){
+  //     navigate("/studentHome");
+  //   }else{
+  //     navigate("/");
 
+  //   }
+  // },[navigate]);  
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
@@ -42,9 +50,12 @@ function CalendarInfo() {
           <NavLink to="/">
             <a className={styles.menu_item}> Calendar </a>
           </NavLink>
-          <NavLink to="/">
-            <a className={styles.menu_item}> Sign Out </a>
-          </NavLink>
+          {/* <NavLink > */}
+            <a className={styles.menu_item} onClick={()=>{localStorage.removeItem("user");
+          // setUserExist(false);
+          navigate("/");
+          }}> Sign Out </a>
+          {/* </NavLink> */}
         </nav>
       )}
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import styles from "./style.module.scss";
 
 function Card({tutor,onChildClick}) {
@@ -59,11 +59,12 @@ function Card({tutor,onChildClick}) {
                     <p className={styles.card_grid_text}>{tutor.info}</p>
                     <div className={styles.card_grid_btn_wrapper}>
                         <button className={styles.card_grid_btn}>
-                            <NavLink className="navlink"
+                            {/* <NavLink className="navlink"
                                 to="/detail" state={{props: tutor}}
-                            >
+                            > */}
+                            <Link to={`tutors/${tutor._id}`} className="navlink">
                                 PROFILE
-                            </NavLink></button>
+                            </Link></button>
                     </div>
                 </div>
             </div>
