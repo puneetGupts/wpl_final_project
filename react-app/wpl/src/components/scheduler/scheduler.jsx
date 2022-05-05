@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-restricted-globals */
-import React from 'react'
+import React, {Component} from 'react'
 import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -8,21 +8,50 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import Modal from "react-bootstrap/Modal";
 import styles from './style.module.scss';
+import { TimePicker } from 'antd';
 
-export default class Scheduler extends React.Component {
+
+
+export default class Scheduler extends Component {
   
   state = {
     weekendsVisible: true,
     currentEvents: [],
     show : false,
+    showAvailableTime : false,
+    availability: [],
+    selectedTime: '',
     selectInfo:[],
+    time: '10:00 AM',
+    DBEvents:[],
+  }
+  componentDidMount = () => {
+    console.log("component did mount");
+    const response = fetch('http://localhost:3000/appointments')
+    .then( response => response.json())
+    .then((data) => {
+      this.setState({DBEvents : data});
+      console.log(this.state.DBEvents);
+      console.log('Initial Events' + INITIAL_EVENTS)
+    })
+    .catch(console.log);
   }
 
 
 
 
-
-
+  calendarValue = (events) => {
+    const response = fetch('event_util.json')
+    .then( response => response.json())
+    .then((data) => {
+      this.setState({DBEvents : data});
+      console.log(this.state.DBEvents);
+      console.log('Initial Events' + INITIAL_EVENTS.json())
+    })
+    .catch(console.log);
+    return this.state.DBEvents;
+   }
+ 
   render() {
     
 
@@ -42,7 +71,8 @@ export default class Scheduler extends React.Component {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            
+            initialEvents={ INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
@@ -67,9 +97,26 @@ export default class Scheduler extends React.Component {
           <Modal.Title>Schedule Meeting</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Meeting Detail</label>
-          <input type="text" class="form-control" placeholder="Meeting Detail" id="meetingDetail"/>
+        <div className="form-group">
+          <label>Meeting Detail</label>
+          <input type="text" className="form-control" placeholder="Meeting Detail" id="meetingDetail" onChange={this.handlechange}/>
+          <div>
+          <button className="link" onClick ={this.showAvailableTime}>Show available times</button>
+
+          </div>
+          <div style={{display: "none"}} id="welcomeDiv" >
+              <a id = "8 AM to 9 AM"> <input id="male" type="radio" value="8 AM to 9 AM" name="time" /> <label>8 AM to 9 AM</label><br/></a>
+              <a id = "9 AM to 10 AM"> <input id="male" type="radio" value="9 AM to 10 AM" name="time" /> <label>9 AM to 10 AM</label><br/></a>
+              <a id = "10 AM to 11 AM"> <input id="male" type="radio" value="10 AM to 11 AM" name="time" /> <label>10 AM to 11 AM</label><br/></a>
+              <a id = "11 AM to 12 AM"> <input id="male" type="radio" value="11 AM to 12 PM" name="time" /> <label>11 AM to 12 PM</label><br/></a>
+              <a id = "1 PM to 2 PM"> <input id="male" type="radio" value="1 PM to 2 PM" name="time" /> <label>1 PM to 2 PM</label><br/></a>
+              <a id = "2 PM to 3 PM"> <input id="male" type="radio" value="2 PM to 3 PM" name="time" /> <label>2 PM to 3 PM</label><br/></a>
+              <a id = "3 PM to 4 PM"> <input id="male" type="radio" value="3 PM to 4 PM" name="time" /> <label>3 PM to 4 PM</label><br/></a>
+              <a id = "4 PM to 5 PM"> <input id="male" type="radio" value="4 PM to 5 PM" name="time" /> <label>4 PM to 5 PM</label><br/></a>
+
+              
+          </div>
+
         </div>
 
 
@@ -110,21 +157,55 @@ export default class Scheduler extends React.Component {
       </div>
     )
   }
+  showAvailableTime = async() =>{
+    console.log("function called");
+    console.log("selected Time" + this.state.selectInfo.startStr);
 
+      try {
+          const response = await fetch(`http://localhost:3000/appointments/?day=${this.state.selectInfo.startStr}`);
+          const jsonData = await response.json();
+          console.log(jsonData.length);
+          for(var i = 0; i < jsonData.length; i++){
+              
+             document.getElementById(jsonData[i].slot).style.display = "none";
+          }
+
+  
+      } catch (error) {
+  
+          console.error(error.message);
+  
+      }
+      document.getElementById('welcomeDiv').style.display = "block";
+
+  }
   handleWeekendsToggle = () => {
     this.setState({
       weekendsVisible: !this.state.weekendsVisible
     })
   }
+  handleTimeSelection = (time) => {
+    this.setState({
+      time: time,
+    })
+  }
   handleSelectDate = () => {
-    let title =document.getElementById("meetingDetail").value ;
+    let timeSlot = "";
+    let times = document.getElementsByName('time');
+    times.forEach((time) => {
+                if (time.checked) {
+                  timeSlot = time.value;
+                }
+            });
     this.setState({
       show: false
     });
     let calendarApi = this.state.selectInfo.view.calendar;
     console.log(this.state.selectInfo);
     calendarApi.unselect() // clear date selection
+    console.log(timeSlot);
 
+    let title = document.getElementById("meetingDetail").value + timeSlot;
     if (title) {
       calendarApi.addEvent({
         id: createEventId(),
@@ -134,6 +215,27 @@ export default class Scheduler extends React.Component {
         allDay: this.state.selectInfo.allDay
       })
     }
+
+    try {
+
+      fetch(`http://localhost:3000/appointments`, {
+        method:  'POST',
+        body: JSON.stringify({
+            title: document.getElementById("meetingDetail").value,
+            slot: timeSlot,
+            date: this.state.selectInfo.startStr
+
+        }), 
+        headers: {
+          "Content-type" : "application/json"
+        }
+      });
+
+  } catch (error) {
+
+      console.error(error.message);
+
+  }
    
   }
 
@@ -166,6 +268,7 @@ export default class Scheduler extends React.Component {
 }
 
 function renderEventContent(eventInfo) {
+  console.log('show event'+eventInfo.event.title);
   return (
     <>
       <b>{eventInfo.timeText}</b>
