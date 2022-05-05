@@ -12,7 +12,7 @@ function Footer() {
         <div className={styles.footer_wrapper}>
           <FooterNav />
           <div className={styles.social_media}>
-            {CamblyConstants.SOCIAL_MEDIA.map((item) => (
+            {CamblyConstants.SOCIAL_MEDIA.map((item,id) => (
               <nav>
                 <NavLink to={item.slug}>
                 

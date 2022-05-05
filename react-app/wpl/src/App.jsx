@@ -9,7 +9,7 @@ import StudentHome from "./components/studentHome";
 import Detail from "./components/detail";
 import Scheduler from "./components/scheduler/scheduler";
 // import Navbar from "./components/navbar";
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import {
   Routes,
   Route,Navigate
@@ -25,12 +25,11 @@ function App() {
         <Route exact="true" path="/register" element={<Register/>} />
         <Route exact="true" path="/studentHome" element={<StudentHome/>} />
         <Route exact="true" path="/favorite" element={<Favorites/>} />
-        <Route exact="true" path="/detail" element={<Detail/>} />
+        <Route exact="true" path="/studentHome/tutors/:id" element={<Detail/>} />
+        <Route path="*" element={<Navigate to="/" replace />}/>        
         <Route exact="true" path="/schedule" element={<Scheduler/>} />
-        <Route path="*" element={<Navigate to="/" replace />}
-    />        
-        </Routes>
-      {/* <Footer/> */}
+
+      <Footer/>
     </>
   );
 }
