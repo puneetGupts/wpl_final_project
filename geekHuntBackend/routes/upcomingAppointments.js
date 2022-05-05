@@ -12,7 +12,7 @@ var collection = db.get('Appointments');
 router.get('/', function(req, res) {
     const d = new Date();
 console.log(d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate());
-    collection.find( { date: { $gte: req.query.day } },{ limit: 5 }
+    collection.find( { date: { $gte: req.query.day } , student_id : req.query.student_id },{ limit: 5 }
     , function(err, appointments){
         if (err) throw err;
         res.json(appointments);

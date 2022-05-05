@@ -19,8 +19,8 @@ function Notifications() {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         today = yyyy+'-'+mm+'-'+dd;
-
-        const response = await fetch('http://localhost:3000/upcomingAppointments?day='+today);
+        const userInfo=localStorage.getItem("user");
+        const response = await fetch('http://localhost:3000/upcomingAppointments?day='+today+'&student_id='+userInfo);
       const jsonData = await response.json();
         console.log('jsonData'+(JSON.stringify(jsonData)));
         setAppointments(jsonData);
