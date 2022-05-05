@@ -9,6 +9,7 @@ var usersRouter = require("./routes/users");
 var tutorsRouter = require("./routes/tutors");
 var appointmentsRouter = require("./routes/appointments");
 var favouritesRouter = require("./routes/favourites");
+var upAppRouter = require('./routes/upcomingAppointments');
 var app = express();
 
 // view engine setup
@@ -26,6 +27,7 @@ app.use("/users", usersRouter);
 app.use("/tutors", tutorsRouter);
 app.use("/appointments", appointmentsRouter);
 app.use("/favourites", favouritesRouter);
+app.use('/upcomingAppointments', upAppRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
