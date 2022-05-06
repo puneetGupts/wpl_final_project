@@ -12,6 +12,7 @@ var reviews = require("./routes/reviews");
 var upAppRouter = require("./routes/upcomingAppointments");
 
 var favouritesRouter = require("./routes/favourites");
+var upAppRouter = require("./routes/upcomingAppointments");
 var app = express();
 
 // view engine setup

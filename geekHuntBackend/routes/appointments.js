@@ -2,9 +2,9 @@ var express = require("express");
 var router = express.Router();
 
 var monk = require("monk");
-// const { response } = require("../app");
-var db = monk("localhost:27017/geekHunt");
-var collection = db.get("appointments");
+var db = monk("localhost:27017/GeekHunt");
+console.log("database" + db);
+var collection = db.get("Appointments");
 
 router.get("/", function (req, res) {
   console.log("Request Parameter  >> " + req.query.day);
@@ -56,6 +56,23 @@ router.post("/", function (req, res) {
 //   );
 // });
 
+router.put("/:id", function (req, res) {
+  collection.update(
+    { _id: req.params.id },
+    {
+      $set: {
+        detail: req.body.detail,
+        slot: req.body.slot,
+        tutor_id: req.body.tutor_id,
+        student_id: req.body.student_id,
+      },
+    },
+    function (err, appointments) {
+      if (err) throw err;
+      res.json(appointments);
+    }
+  );
+});
 router.delete("/:id", function (req, res) {
   collection.remove({ _id: req.params.id }, function (err, appointments) {
     if (err) throw err;
