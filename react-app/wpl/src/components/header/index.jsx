@@ -7,12 +7,14 @@ import ContainerFluid from "../containerFluid";
 import Notifications from "../notifications";
 import CalenderInfo from "../calenderInfo";
 import ProfileButton from "../profileButton";
+import Logo from "../../images/logo.png"
 import InfoPlan from "../infoPlan";
 import shortid from "shortid";
 
 
 
 function Header({}) {
+
     return (
       <header className={styles.header}>
         <ContainerFluid>
@@ -20,7 +22,7 @@ function Header({}) {
             <div className={styles.left_side}>
               <Link to="/">
                 <a className="logo">
-                <img src="logo.png" alt="" width="30" height="30" 
+                <img src={Logo} alt="" width="30" height="30" 
                 className="d-inline-block align-top"/>
                 </a>
               </Link>

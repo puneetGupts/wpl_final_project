@@ -35,9 +35,9 @@ function Navbar() {
             <li className="nav-item">
               <NavLink exact="true" activeclassname="menu_active" className="nav-link" to="/register">Register</NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink exact="true" activeclassname="menu_active" className="nav-link" to="/studentHome">Student Home</NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

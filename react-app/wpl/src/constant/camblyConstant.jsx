@@ -17,13 +17,13 @@ const CamblyConstants = {
         value: "Tutors",
       },
       {
-        slug: "/#/courses",
-        value: "Courses",
+        slug: "/becomeTuor",
+        value: "Become Tutor",
       },
-      {
-        slug: "/#/progress",
-        value: "Progress",
-      },
+      // {
+      //   slug: "/#/progress",
+      //   value: "Progress",
+      // },
     ],
   
     FOOTER: [

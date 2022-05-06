@@ -7,13 +7,15 @@ import About from "./components/about";
 import Register from "./components/register";
 import StudentHome from "./components/studentHome";
 import Detail from "./components/detail";
+import Scheduler from "./components/scheduler/scheduler";
 // import Navbar from "./components/navbar";
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import {
   Routes,
   Route,Navigate
 } from "react-router-dom";
 import Favorites from "./favorites";
+import BecomeTutor from "./components/becomeTutor";
 function App() {
   return (
     <>
@@ -24,11 +26,16 @@ function App() {
         <Route exact="true" path="/register" element={<Register/>} />
         <Route exact="true" path="/studentHome" element={<StudentHome/>} />
         <Route exact="true" path="/favorite" element={<Favorites/>} />
-        <Route exact="true" path="/detail" element={<Detail/>} />
-        <Route path="*" element={<Navigate to="/" replace />}
-    />        
+        <Route exact="true" path="/studentHome/tutors/:id" element={<Detail/>} />
+        <Route exact="true" path="/favorite/tutors/:id" element={<Detail/>} />
+        <Route exact="true" path="/becomeTuor" element={<BecomeTutor/>} />
+        <Route exact="true" path="/schedule" element={<Scheduler/>} />
+        
+        {/* <Route path="*" element={<Navigate to="/" replace />
+        }
+    />         */}
         </Routes>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }
