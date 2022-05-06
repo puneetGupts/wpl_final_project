@@ -3,6 +3,9 @@ var router = express.Router();
 
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/auth");
+const bcrypt = require("bcryptjs");
+// const asyncHandler = require("express-async-handler");
+
 var monk = require("monk");
 var db = monk("localhost:27017/geekHunt");
 var collection = db.get("users");
@@ -18,30 +21,38 @@ router.get("/welcome", auth, function (req, res) {
 });
 
 router.post("/register", function (req, res) {
-  const { username, email, password } = req.body;
-
-  if (!(username && email && password)) {
+  let { username, email, password, pic, isTutor } = req.body;
+  if (!(username && email && password && pic && !isTutor)) {
     res.json({ error: "All fields are required!" });
   } else {
     collection.findOne({ email: email }, function (err, user) {
       if (err) throw err;
 
       if (user) {
-        res.json({ error: "User already exists. Please login!" });
+        res.status(400).send({ msg: "User already exists. Please login!" });
+        // res.json({ error: "User already exists. Please login!" });
       } else {
+        const salt = bcrypt.genSaltSync(10);
+        password = bcrypt.hashSync(password, salt);
+
         let newUser = {
           username,
           email,
           password,
+          pic,
+          isTutor,
         };
         collection.insert(newUser, function (err, user) {
-          if (err) throw err;
+          if (err) {
+            res.status(400);
+            throw new Error("Error occured!");
+          }
           var token = jwt.sign({ user_id: user._id, email }, "secretkey");
 
           if (token) {
             user.token = token;
           }
-          res.json(user);
+          res.status(201).json(user);
         });
       }
     });
@@ -49,23 +60,29 @@ router.post("/register", function (req, res) {
 });
 
 router.post("/login", function (req, res) {
-  const { email, password } = req.body;
-
+  let { email, password } = req.body;
   if (!(email && password)) {
-    res.json({ error: "All fields are required!" });
+    res.status(400).send({ msg: "All fields are required!" });
   } else {
     collection.findOne({ email: email }, function (err, user) {
       if (err) throw err;
       if (user == null) {
-        res.send("User doesn't exist");
+        res.status(400).send({ msg: "User does not exist" });
       } else {
-        if (user.password == password) {
-          var token = jwt.sign({ user_id: user._id, email }, "secretkey");
-          user.token = token;
-          res.json(user);
-        } else {
-          res.send("User email or password is incorrect!");
-        }
+        // console.log(password);
+        bcrypt.compare(password, user.password, (error, data) => {
+          if (error) {
+            throw err;
+          } else {
+            if (data) {
+              var token = jwt.sign({ user_id: user._id, email }, "secretkey");
+              user.token = token;
+              return res.status(200).json(user);
+            } else {
+              return res.status(400).json({ msg: "Invalid credential!!" });
+            }
+          }
+        });
       }
     });
   }

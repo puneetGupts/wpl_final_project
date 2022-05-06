@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./style.module.scss";
-
-function PersonalityInfo({ about, language,teachingStyle,workEx,education,certification }) {
+import Reviews from "../reviews";
+function PersonalityInfo({ about, language,teachingStyle,workEx,education,certification,tutor,reviews }) {
   return (
     <div className={styles.list_wrapper}>
       <div className={styles.list}>
@@ -28,6 +28,7 @@ function PersonalityInfo({ about, language,teachingStyle,workEx,education,certif
         <h3>Certifications</h3>
         <p >{certification}</p>
       </div>
+      <Reviews tutor={tutor} reviews={reviews}></Reviews> 
     </div>
   );
 }

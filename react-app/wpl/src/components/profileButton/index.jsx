@@ -2,9 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./style.module.scss";
 import {NavLink, useNavigate} from "react-router-dom";
 // import avatar from "../../src/assets/img/avatar.png";
-import avatar from "../../images/avatar.png";
+// import avatar from "../../images/avatar.png";
 
 function CalendarInfo() {
+       let storageUser = JSON.parse(localStorage.getItem("user"));
+  let profileImage=storageUser.pic;
+  
   const ref = useRef();
   const navigate=useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +36,7 @@ function CalendarInfo() {
   return (
     <div className={styles.profile}>
       <img
-        src={avatar}
+        src={`../../${profileImage}`} 
         alt="profile avatar"
         width={40}
         height={40}
@@ -52,6 +55,7 @@ function CalendarInfo() {
           </NavLink>
           {/* <NavLink > */}
             <a className={styles.menu_item} onClick={()=>{localStorage.removeItem("user");
+            localStorage.removeItem("cachedTutors");
           // setUserExist(false);
           navigate("/");
           }}> Sign Out </a>

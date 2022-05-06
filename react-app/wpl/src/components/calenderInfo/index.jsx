@@ -3,6 +3,8 @@ import styles from "./style.module.scss";
 import {Link} from "react-router-dom";
 import calendar from "../../images/calendar.png";
 import teacher from "../../images/tutor.png";
+import scheduler from "../scheduler/scheduler";
+// import scheduler from "./components/scheduler/scheduler";
 function CalendarInfo() {
   const ref = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,11 +25,11 @@ function CalendarInfo() {
 
   return (
     <div className={styles.calendar}>
-      <div onClick={() => setIsMenuOpen(true)} className={styles.calendar_icon}>
+      <Link to="/schedule"  className={styles.calendar_icon}>
         <img src={calendar} alt="bell icon" width={5} height={40} />
-      </div>
+      </Link>
 
-      {isMenuOpen && (
+      {/* {isMenuOpen && (
         <div className={styles.calendar_info} ref={ref}>
           <div className={styles.menu_title}>
             <p>Upcoming Lessons</p>
@@ -59,7 +61,7 @@ function CalendarInfo() {
             <a className={styles.schedule_btn}>+ Schedule A Lesson</a>
           </Link>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

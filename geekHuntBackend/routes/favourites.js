@@ -11,7 +11,6 @@ var collection = db.get("favourites");
 //get  favourites for a particular student
 router.get("/", function (req, res) {
   studentId = req.query.studentId;
-  console.log(studentId);
   collection.find({ studentId: studentId }, function (err, tutors) {
     if (err) throw err;
     res.json(tutors);
@@ -68,8 +67,8 @@ router.post("/", function (req, res) {
 //   );
 // });
 
-router.delete("/:id", function (req, res) {
-  collection.remove({ _id: req.params.id }, function (err, favourites) {
+router.delete("/", function (req, res) {
+  collection.remove({ tutorId: req.query.tutorId }, function (err, favourites) {
     if (err) throw err;
     res.json(favourites);
   });

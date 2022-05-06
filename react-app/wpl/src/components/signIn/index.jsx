@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../navbar";
+import Loading from "../loading";
+import ErrorMessage from "../errorMessage"
 import Footer from "../footer";
 import styles from "./style.module.scss";
 // import {Link} from "react-router-dom";
@@ -8,6 +10,8 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const[loading,setLoading]=useState(false);
+  const [show, setShow] = useState(true);
 
   const navigate = useNavigate();
 
@@ -22,9 +26,10 @@ function SignIn() {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-
+    // setShow(true);
     // console.log(email,password)
     try {
+      setLoading(true);
       const data = await fetch("http://localhost:3001/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,32 +41,45 @@ function SignIn() {
         }),
       });
       const response = await data.json();
-      // console.log(response);
-      localStorage.setItem("user", JSON.stringify(response));
+      // console.log(data.status==200);
+      if (data.status===200) {
+        // Store response body normally
 
-      const localstorage_user = JSON.parse(localStorage.getItem("user"));
+        localStorage.setItem("user", JSON.stringify(response));
 
-      console.log(localstorage_user.token);
-      if (localstorage_user) {
-        fetch("http://localhost:3001/welcome/", {
-          method: "get",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "x-auth-token": localstorage_user.token,
-          },
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            if (res.auth) {
-              window.location.reload();
-              // navigate("/studentHome");
-            }
-          });
+        const localstorage_user = JSON.parse(localStorage.getItem("user"));
+        setLoading(true);
+            setShow(false);
+        // console.log(localstorage_user.token);
+        if (localstorage_user) {
+          fetch("http://localhost:3001/welcome/", {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "x-auth-token": localstorage_user.token,
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              if (res.auth) {
+                window.location.reload();
+                // navigate("/studentHome");
+              }
+            });
+        }
       }
+      if (data.status === 400) {
+        setLoading(false);
+        setShow(true);
+        console.log(response)
+        setError(response.msg);
+
+      }
+
     } catch (error) {
-      console.error(error.message);
-      setError(error.response.data.message);
+      // console.error(error.message);
+      setError(error);
     }
   };
 
@@ -88,11 +106,13 @@ function SignIn() {
           </div>
         </div>
         {/* Form Card */}
+        {loading && <Loading/>}
         <div style={{ maxWidth: "28rem", width: "100%" }}>
           <form id="myForm" onSubmit={onSubmitForm}>
             {/* Login Form */}
             {/*first was form tag   */}
             <div className="bg-white shadow rounded p-2 input-group-lg">
+              {/* {console.log(show)} */}
               <div className="flex-column flex-lg-row">
                 <h2 className="d-flex align-items-center justify-content-center text-muted ">
                   <i
@@ -101,6 +121,8 @@ function SignIn() {
                   ></i>
                   Sign In
                 </h2>
+                {error && show && <ErrorMessage variant="danger" showCross={setShow} shows={show} >{error} </ErrorMessage>}
+
               </div>
               <input
                 type="email"
@@ -126,20 +148,20 @@ function SignIn() {
                 Sign In
               </button>
               {/* </Link> */}
-              <Link to="#" className="text-decoration-none text-center">
+              {/* <Link to="#" className="text-decoration-none text-center">
                 <p>Forgot password?</p>
-              </Link>
+              </Link> */}
               {/* create form */}
               <hr />
               <div className="text-center my-4">
-                <button
+                <Link to="/register"
                   className="btn btn-success btn-lg"
                   type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#createModal"
+                  // data-bs-toggle="modal"
+                  // data-bs-target="#createModal"
                 >
                   Create New Account
-                </button>
+                </Link>
               </div>
             </div>
           </form>
