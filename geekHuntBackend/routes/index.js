@@ -59,6 +59,26 @@ router.post("/register", function (req, res) {
   }
 });
 
+router.put("/update/:id", function (req, res) {
+  let { username, email, password, pic, isTutor } = req.body;
+  collection.update(
+    { _id: req.params.id },
+    {
+      $set: {
+        username: username,
+        email: email,
+        password: password,
+        pic: pic,
+        isTutor: isTutor,
+      },
+    },
+    function (err, videos) {
+      if (err) throw err;
+      res.json(videos);
+    }
+  );
+});
+
 router.post("/login", function (req, res) {
   let { email, password } = req.body;
   if (!(email && password)) {

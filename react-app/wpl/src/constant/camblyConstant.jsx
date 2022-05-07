@@ -17,7 +17,7 @@ const CamblyConstants = {
         value: "Tutors",
       },
       {
-        slug: "/becomeTuor",
+        slug: "/becomeTutor",
         value: "Become Tutor",
       },
       // {
