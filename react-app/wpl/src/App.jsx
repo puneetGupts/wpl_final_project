@@ -8,6 +8,8 @@ import Register from "./components/register";
 import StudentHome from "./components/studentHome";
 import Detail from "./components/detail";
 import Scheduler from "./components/scheduler/scheduler";
+import TutorHome from "./components/tutorHome";
+import EditTutor from "./components/editTutor";
 // import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import {
@@ -28,7 +30,9 @@ function App() {
         <Route exact="true" path="/favorite" element={<Favorites/>} />
         <Route exact="true" path="/studentHome/tutors/:id" element={<Detail/>} />
         <Route exact="true" path="/favorite/tutors/:id" element={<Detail/>} />
-        <Route exact="true" path="/becomeTuor" element={<BecomeTutor/>} />
+        <Route exact="true" path="/becomeTutor" element={<BecomeTutor/>} />
+        <Route exact="true" path="/tutorHome/:id" element={<TutorHome/>} />
+        <Route exact="true" path="/tutorHome/:id/editTutor" element={<EditTutor/>} />
         <Route exact="true" path="/schedule" element={<Scheduler/>} />
         
         {/* <Route path="*" element={<Navigate to="/" replace />

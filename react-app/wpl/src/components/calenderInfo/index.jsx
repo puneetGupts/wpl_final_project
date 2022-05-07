@@ -5,7 +5,8 @@ import calendar from "../../images/calendar.png";
 import teacher from "../../images/tutor.png";
 import scheduler from "../scheduler/scheduler";
 // import scheduler from "./components/scheduler/scheduler";
-function CalendarInfo() {
+function CalendarInfo({tutor}) {
+  // console.log(tutor);
   const ref = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

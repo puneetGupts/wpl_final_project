@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from "react"
-import {useNavigate} from "react-router-dom"
-import Navbar from "../navbar"
+import React, { useState, useEffect } from 'react'
+import { useParams ,useNavigate} from 'react-router-dom'
+import Header from '../header';
 import Form from "react-bootstrap/Form"
 import { Row, Col } from "react-bootstrap"
 import ContainerFluid from "../containerFluid"
-import Header from "../header"
 import Loading from "../loading"
 
-function BecomeTutor() {
-    const localstorage_user = JSON.parse(localStorage.getItem("user"));
-    const navigate = useNavigate();
+ function EditTutor() {
+  let { id } = useParams();
+  const navigate = useNavigate();
 
-  // JS form validation (for mentor)
+  const localstorage_user = JSON.parse(localStorage.getItem("user"));
+  const localstorage_tutors = JSON.parse(localStorage.getItem("cachedTutors"));
+
+  const [tutors, setTutor] = useState([]);
+    // Teacher Form Fields
   const params = {
     tname: localstorage_user.username,
-    tavatar: localstorage_user.pic,
-    location: "",
+    tavatar: "",
+    location: localstorage_tutors[0].location,
     profession: "",
-    personalInfo: [],
-    about: "",
-    education: "",
-    workEx: "",
-    lang: "",
-    teachingStyle: "",
-    cert: "",
-    chats: "",
+    personalInfo: localstorage_tutors[0].personalInfo,
+    about: localstorage_tutors[0].about,
+    education: localstorage_tutors[0].education,
+    workEx: localstorage_tutors[0].workEx,
+    lang: localstorage_tutors[0].languages,
+    teachingStyle: localstorage_tutors[0].teachingStyle,
+    cert: localstorage_tutors[0].certification,
+    chats: localstorage_tutors[0].chats,
     // temail: "",
     // tpassword: "",
     // tconfirmpswd: ""
@@ -32,29 +35,9 @@ function BecomeTutor() {
   const [FormValues, setFormValues] = useState(params);
   const [FormErrors, setFormErrors] = useState({});
   const [error, setError] = useState(false);
-  const [show, setShow] = useState(true);
+  // const [show, setShow] = useState(true);
   const [isSubmit, setIsSubmit] = useState(false);
-  // const[loading,setLoading]=useState(false);
-
-
-
-  // Teacher Form Fields
-  // const [tname, tsetName] = useState("")
-  // const [badge, tsetavatar] = useState("");
-  // const [temail, tsetEmail] = useState("");
-  // const [tpassword, tsetPassword] = useState("");
-  // const [tconfirmpswd, tsetconfirmpswd] = useState("");
-  // const [personalInfo, setpersonalInfo] = useState("");
-  // const [location, setlocation] = useState("");
-  // const [profession, setProfession] = useState("");
-  // const [about, setAbout] = useState("");
-  // const [education, setEducation] = useState("");
-  // const [workEx, setworkEx] = useState("");
-  // const [lang, setLanguages] = useState("");
-  // const [teachingStyle, setteachingStyle] = useState("");
-  // const [cert, setcertification] = useState("");
-  // const [chats, setchats] = useState("");
-
+  const[loading,setLoading]=useState(false);
 
   const personalInfoChange = (li) => {
     return li.toString().split("\n");
@@ -68,36 +51,30 @@ function BecomeTutor() {
   };
 
   const onSubmitForm = async (e) => {
-
     e.preventDefault();
+
+// console.log(FormValues.tavatar);
+    // console.log(FormValues.tavatar.toString().split("\\").pop())
     setFormErrors(val_tutor(FormValues));
     var formErrorsForm=val_tutor(FormValues);
-console.log(formErrorsForm);
-    // console.log(FormValues.tavatar.toString().split("\\").pop())
-    // localstorage_user.setItem("isTutor", true);
-  
+
+
     // setIsSubmit(true);
     try {
-      console.log(isSubmit);
-
       // setLoading(true);
-    // if (Object.keys(FormErrors).length === 0 && !isSubmit) {
-    if (Object.keys(formErrorsForm).length ===0 && !isSubmit) {
-      // console.log(isSubmit);
-      console.log(formErrorsForm.length)
-
-    const registerResponseUser = await fetch(`http://localhost:3001/update/${localstorage_user._id}`,{
-      method: "PUT",
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify({
-          username: localstorage_user.username,
-          email: localstorage_user.email,
-          password: localstorage_user.password,
-          pic: FormValues.tavatar,
-          isTutor:true
-  })})
-        const registerResponse = await fetch(`http://localhost:3001/tutors`,{
-          method: "POST",
+      if (Object.keys(formErrorsForm).length ===0 && !isSubmit) {
+      const registerResponseUser = await fetch(`http://localhost:3001/update/${localstorage_user._id}`,{
+        method: "PUT",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({
+            username: localstorage_user.username,
+            email: localstorage_user.email,
+            password: localstorage_user.password,
+            pic: FormValues.tavatar.toString().split("\\").pop(),
+            isTutor:true
+    })})  
+        const registerResponse = await fetch(`http://localhost:3001/tutors/${localstorage_tutors[0]._id}`,{
+          method: "PUT",
           headers: { "Content-Type": "application/json"},
           body: JSON.stringify({
             _id: localstorage_user._id,
@@ -107,65 +84,69 @@ console.log(formErrorsForm);
             location: FormValues.location,
             info: "Architect- ESL teacher",
             video: "",
-            avatar: FormValues.tavatar,
+            avatar: FormValues.tavatar.toString().split("\\").pop(),
             about: FormValues.about,
             languages: FormValues.lang,
             chats: FormValues.chats,
-            personalInfo: FormValues.personalInfo.toString().split("\n"),
+            personalInfo: FormValues.personalInfo,
             education: FormValues.education,
             certification: "TOEFL",
             teachingStyle: FormValues.teachingStyle,
             workEx: FormValues.workEx,
-            rating: "0",
-            reviews: "0",
+            rating: localstorage_tutors[0].rating,
+            reviews: localstorage_tutors[0].reviews,
       })})  
       const response = await registerResponse.json();
+
+      localstorage_user.pic=FormValues.tavatar.toString().split("\\").pop();
+      localStorage.setItem('user', JSON.stringify(localstorage_user));
+      localstorage_tutors[0].avatar=FormValues.tavatar.toString().split("\\").pop();
+      localStorage.setItem('cachedTutors', JSON.stringify(localstorage_tutors[0]));
       if (registerResponse.status===201) {
-        setShow(false);
+        // localstorage_user["isTutor"]=true;
+        navigate(`/tutorHome/${localstorage_tutors[0]._id}`);
+
+      localstorage_user.pic=FormValues.tavatar.toString().split("\\").pop();
+      localStorage.setItem('user', JSON.stringify(localstorage_user));
+      localstorage_tutors[0].avatar=FormValues.tavatar.toString().split("\\").pop();
+      localStorage.setItem('cachedTutors', JSON.stringify(localstorage_tutors[0]));
+        // setShow(false);
         setIsSubmit(true);
-        // var retrievedObject = localStorage.getItem('user').isTutor;
-        localstorage_user.isTutor=true;
-        localStorage.setItem('user', JSON.stringify(localstorage_user));
-        // localStorage.setItem('', testObject);
-        // navigate("/studentHome");
-
-        // setLoading(false);
+        setLoading(false);
         setFormValues(params);
-        window.location.reload();
+
+        // window.location.reload();
 
 
-      }}else{
-        console.log(isSubmit);
-        // setFormErrors("");
-        // setIsSubmit(false);
+
       }
       // if (registerResponse.status === 400) {
-      //   setIsSubmit(false);
+      //   // setIsSubmit(false);
       //   setError(error);
       //   setError(response.msg);
   
       // }
+    
+    }
   }
   catch (error) {
       // console.error(error.message);
       setError(error);
     }    
 
+    // console.log(name + email + password + confirmpswd);
+    // console.log(avatar.split('\\').pop());
+
+    // console.log(personalInfo.split("\n"));
+    // console.log(tname + badge.split("\\").pop() + temail + tpassword + tconfirmpswd + personalInfo + location + profession + about + education + workEx + lang + teachingStyle + cert);
+    // console.log(chats);
   };
 
-  // useEffect(() => {
-  //   // console.log(localstorage_user.isTutor);
-  //   // localstorage_user.setItem("isTutor", true);
-  //   // localstorage_user.setItem(isTutor, true);
-
-
-  //   // if (Object.keys(FormErrors).length === 0 && IsSubmit) {
-  //   //   console.log(FormValues);
-  //   // }
-  // }, []);
 
   const val_tutor = (values) => {
     const errors = {};
+    // const reg_email = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/i;
+    // const reg_pswd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/i;
 
     if (!values.tname) {
       errors.tname = "Username is required.";
@@ -173,6 +154,24 @@ console.log(formErrorsForm);
     if (!values.tavatar) {
       errors.tavatar = "Avatar not uploaded. Please upload image.";
     }
+    // if (!values.temail) {
+    //   errors.temail = "Email is required.";
+    // } else if (!reg_email.test(values.temail)) {
+    //   errors.temail = "This is not a valid email format";
+    // }
+    // if (!values.tpassword || !values.tconfirmpswd) {
+    //   errors.tpassword = "Either or both password fields are blank.";
+    // } else if (!reg_pswd.test(values.tpassword)) {
+    //   errors.tpassword = "Invalid password format.\n";
+    //   errors.tpassword +=
+    //     "NOTE: Password should have minimum 8 and maximum 20 characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+    // }
+    // if (values.tpassword !== values.tconfirmpswd) {
+    //   errors.tconfirmpswd = "Passwords do not match. Try again.";
+    //   if(!values.tconfirmpswd) {
+    //     errors.tconfirmpswd += "\nKindly type above password to confirm";
+    //   }
+    // }
     
     if (!values.location) {
       errors.location = "Location is required";
@@ -209,21 +208,20 @@ console.log(formErrorsForm);
     }
 
     return errors;
-  };
-
+  };  
   return (
     <>
     <Header/>
     {/* <div> */}
     <ContainerFluid>
-      {Object.keys(FormErrors).length === 0 && isSubmit ? (
+      {/* {Object.keys(FormErrors).length === 0 && isSubmit ? (
         <div>Signed in successfully</div>
       ) : (
         <pre>{JSON.stringify(FormValues, undefined, 2)}</pre>
-      )}
+      )} */}
 
       <h1>Become a Mentor Form</h1>
-        {/* {loading && <Loading/>} */}
+        {loading && <Loading/>}
       <Form onSubmit={onSubmitForm}>
         <Form.Group as={Col}>
           <Form.Label>Name</Form.Label>
@@ -234,7 +232,6 @@ console.log(formErrorsForm);
             placeholder="Enter name"
             onChange={handleChange}
             value={FormValues.tname}
-            readOnly
           />
         </Form.Group>
         <p>{FormErrors.tname}</p>
@@ -242,14 +239,12 @@ console.log(formErrorsForm);
         <Form.Group as={Col}>
           <Form.Label>Upload Avatar: </Form.Label>
           <Form.Control
-            // type="file"
-            type="text"
+            type="file"
             id="tavatar"
-            // accept="image/x-png,image/png,image/jpeg,image/jpg"
+            accept="image/x-png,image/png,image/jpeg,image/jpg"
             name="tavatar"
             onChange={handleChange}
             value={FormValues.tavatar}
-            readOnly
           />
         </Form.Group>
         <p>{FormErrors.tavatar}</p>
@@ -374,6 +369,45 @@ console.log(formErrorsForm);
           />
         </Form.Group>
         <p>{FormErrors.workEx}</p>
+
+        {/* <Row className="mb-3">
+          <Form.Group as={Col}>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              name="temail"
+              placeholder="Enter email"
+              onChange={handleChange}
+              value={FormValues.temail}
+            />
+          </Form.Group>
+          <p>{FormErrors.temail}</p>
+
+          <Form.Group as={Col}>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="tpassword"
+              placeholder="Password"
+              onChange={handleChange}
+              value={FormValues.tpassword}
+            />
+          </Form.Group>
+          <p>{FormErrors.tpassword}</p>
+        </Row>
+
+        <Form.Group as={Col}>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="tconfirmpswd"
+            placeholder="Confirm Password"
+            onChange={handleChange}
+            value={FormValues.tconfirmpswd}
+          />
+        </Form.Group>
+        <p>{FormErrors.tconfirmpswd}</p> */}
+
         <Form.Group as={Row} className="mb-3">
           <button
             className="btn btn-primary w-100 my-3 col-dark"
@@ -388,5 +422,4 @@ console.log(formErrorsForm);
           </>
   )
 }
-
-export default BecomeTutor;
+export default EditTutor

@@ -16,7 +16,7 @@ function DetailHeader({ name, badge, location, avatar, tutor }) {
         </div>
         <Ratings value={tutor.rating} text={`${tutor.reviews} reviews`} />
         <div className={styles.calendar}>
-          <CalenderInfo />
+          <CalenderInfo tutor={tutor}/>
         </div>
       </div>
     </>

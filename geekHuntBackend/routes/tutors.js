@@ -26,16 +26,17 @@ router.get("/:id", function (req, res) {
 router.post("/", function (req, res) {
   collection.insert(
     {
+      _id: req.body._id,
       slug: req.body.slug,
       name: req.body.name,
       badge: req.body.badge,
-      location: req.body.badge,
-      info: req.body.badge,
+      location: req.body.location,
+      info: req.body.info,
       video: req.body.video,
       avatar: req.body.avatar,
       about: req.body.about,
       languages: req.body.languages,
-      chats: req.body.languages,
+      chats: req.body.chats,
       personalInfo: req.body.personalInfo,
       education: req.body.education,
       certification: req.body.certification,
@@ -46,7 +47,7 @@ router.post("/", function (req, res) {
     },
     function (err, videos) {
       if (err) throw err;
-      res.json(videos);
+      res.status(201).json(videos);
     }
   );
 });
@@ -78,7 +79,7 @@ router.put("/:id", function (req, res) {
     },
     function (err, videos) {
       if (err) throw err;
-      res.json(videos);
+      res.status(201).json(videos);
     }
   );
 });

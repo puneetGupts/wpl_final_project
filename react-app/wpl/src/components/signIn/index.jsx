@@ -17,7 +17,14 @@ function SignIn() {
 
   useEffect(()=>{
     const userInfo=localStorage.getItem("user");
-    if(userInfo){
+    if(userInfo ){
+      var isTutor=JSON.parse(userInfo).isTutor;
+      var tutorId=JSON.parse(userInfo)._id;
+
+      // console.log("Hiiiiiiiiiiiiiiiiii");
+      if(isTutor){
+        navigate(`tutorHome/${tutorId}`);
+      }else
       navigate("/studentHome");
       // window.location.reload();
 
