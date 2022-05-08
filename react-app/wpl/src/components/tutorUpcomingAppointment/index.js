@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import Navbar from "../navbar";
+import Header from "../header"
 
 function TutorUpcomingAppointment () {
   
@@ -17,8 +18,8 @@ function TutorUpcomingAppointment () {
         today = yyyy+'-'+mm+'-'+dd;
         const localstorage_user = JSON.parse(localStorage.getItem("user"));
         console.log(localstorage_user);
-        const tutorId = localstorage_user.tutorId;
-        
+        const tutorId = localstorage_user._id;
+          console.log("nirali>> tutorId"+tutorId);
       const response = await fetch('http://localhost:3001/tutorUpcomingAppointments?day='+today+'&tutorId='+tutorId);
       const jsonData = await response.json();
         console.log('jsonData'+(JSON.stringify(jsonData)));
@@ -70,7 +71,7 @@ function TutorUpcomingAppointment () {
           if((tomorrow.getDate() === selectedDate && startHour >= tomorrowHour) ||(selectedDate > tomorrow.getDate() )) {
             
             const res = fetch('http://localhost:3001/appointments/'+props._id, { method: 'DELETE' });
-            alert('deleted Record:'+props._id);
+            
               if(res.status == 'ok')
                 alert('your appointment has been deleted successfully');
                 window.location.reload();
@@ -91,15 +92,19 @@ function TutorUpcomingAppointment () {
     }
     } 
     return (
+      <>
+       <Header/>
         <div>
+          
         <h1>Upcoming Appointments With Students</h1>
         { appointments.map( (appointment,id) => (
 
         <div className="card" key={ id }>
           <div className="card-body">
-            <h5 className="card-title">{ appointment.title }</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{ appointment.date } </h6>
-            <p className="card-text">{ appointment.slot } </p>
+            <h5 className="card-title">Appointment Title : { appointment.title }</h5>
+            <h6 className="card-subtitle mb-2 text-muted">Student Name : { appointment.studentName } </h6>
+            <h6 className="card-subtitle mb-2 text-muted">Date : { appointment.date } </h6>
+            <p className="card-text">Time : { appointment.slot } </p>
             <i key = {appointment._id}>
             <button name ="delete" onClick={()=>{deleteAppointment(appointment)}}/>
             </i>
@@ -107,7 +112,7 @@ function TutorUpcomingAppointment () {
         </div>
         ))}
       </div>
-    
+    </>
       );
 
 }

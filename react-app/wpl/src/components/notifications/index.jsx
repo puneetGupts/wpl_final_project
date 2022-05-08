@@ -115,9 +115,10 @@ function Notifications() {
         { appointments.map( (appointment,id) => (
           <div className="card" key={ id }>
   <div className="card-body">
-    <h5 className="card-title">{ appointment.title }</h5>
-    <h6 className="card-subtitle mb-2 text-muted">{ appointment.date } </h6>
-    <p className="card-text">{ appointment.slot } </p>
+    <h5 className="card-title">Title: { appointment.title }</h5>
+    <h6 className="card-subtitle mb-2 text-muted">Tutor Name : { appointment.tutorName } </h6>
+    <h6 className="card-subtitle mb-2 text-muted">Date : { appointment.date } </h6>
+    <p className="card-text">Time : { appointment.slot } </p>
     <i key = {appointment._id}>
     <button name ="delete" onClick={()=>{deleteAppointment(appointment)}}/>
     </i>

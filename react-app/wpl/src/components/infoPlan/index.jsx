@@ -19,7 +19,7 @@ function InfoPlan() {
               today = yyyy+'-'+mm+'-'+dd;
               setToday(mm+'-'+dd+'-'+yyyy);
               const localstorage_user = JSON.parse(localStorage.getItem("user"));
-              const response = await fetch('http://localhost:3001/calculateTotalHours?day='+today+'&studentId='+localstorage_user._id);
+              const response = await fetch('http://localhost:3001/calculateTotalHours?day='+today+'&Id='+localstorage_user._id);
             const jsonData = await response.json();
               console.log('Nirali>>>> jsonData'+jsonData);
               setTotalHours(jsonData);
@@ -67,7 +67,7 @@ function InfoPlan() {
                 <div className={styles.info_menu} ref={ref}>
                     <div className={styles.info_card}>
                         <span className={styles.card_title}>You completed total</span>
-                        <h3 className={styles.left_minutes}>{calculatedHours} hours of study</h3>
+                        <h3 className={styles.left_minutes}>{calculatedHours} tutoring hours</h3>
                         <span className={styles.border}></span>
                     </div>
                 </div>

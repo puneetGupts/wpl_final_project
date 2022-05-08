@@ -13,7 +13,24 @@ router.get('/', function(req, res) {
     const d = new Date();
 console.log(d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate());
     collection.count( 
-        { date: { $lt: req.query.day } , studentId : req.query.studentId }
+        {
+            '$and': [
+              {
+                'date': {
+                  '$lt': req.query.day
+                }
+              }, {
+                '$or': [
+                  {
+                    'studentId': req.query.Id
+                  }, {
+                    'tutorId': req.query.Id
+                  }
+                ]
+              }
+            ]
+          }
+       // { date: { $lt: req.query.day } , studentId : req.query.studentId }
     , function(err, appointments){
         if (err) throw err;
         res.json(appointments);

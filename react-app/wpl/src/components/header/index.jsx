@@ -34,12 +34,11 @@ function Header({}) {
               <HeaderNav />
             </div>
             <div className={styles.right_side}>
-            {/* { isTutor (
+            
+            {/* { !istutor?  (
                 <InfoPlan />
-            )} */}
-            { !istutor?  (
-                <InfoPlan />
-            ): < ></>} 
+            ): < ></>}  */}
+           < InfoPlan/>
              { !istutor?  (
                 <Notifications />
             ): < ></>} 

@@ -30,6 +30,8 @@ router.post("/", function (req, res) {
       date: req.body.date,
       tutorId: req.body.tutorId,
       studentId: req.body.studentId,
+      studentName: req.body.studentName,
+      tutorName: req.body.tutorName,
     },
     function (err, appointments) {
       if (err) throw err;
