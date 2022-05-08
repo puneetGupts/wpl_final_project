@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./style.module.scss";
 import CalenderInfo from "../calenderInfo";
-import {  NavLink } from 'react-router-dom'
-
-function DetailHeader({ name, badge, location, avatar }) {
+import Ratings from "../ratings";
+function DetailHeader({ name, badge, location, avatar, tutor }) {
   return (
     <>
       <div className={styles.tutor_info}>
-        <img className={styles.avatar} src={avatar} />
+        <img className={styles.avatar} src={`../../${avatar}`} />
         <div className={styles.tutor_info_detail}>
           <h5>{name}</h5>
           <div className={styles.location}>
@@ -15,19 +14,10 @@ function DetailHeader({ name, badge, location, avatar }) {
             <p>{location}</p>
           </div>
         </div>
-        {/*<div className={styles.calendar}>
-          <NavLink className="navlink"
-                                to="/schedule"
-                            >
-                                Schedule
-                            </NavLink>
-  </div>*/}
-        <button className="card_grid_btn">
-                            <NavLink className="navlink"
-                                to="/schedule"
-                            >
-                                Schedule
-                            </NavLink></button>
+        <Ratings value={tutor.rating} text={`${tutor.reviews} reviews`} />
+        <div className={styles.calendar}>
+          <CalenderInfo tutor={tutor}/>
+        </div>
       </div>
     </>
   );

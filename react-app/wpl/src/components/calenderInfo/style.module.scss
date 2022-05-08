@@ -1,6 +1,8 @@
 @import "../../assets/common/variables";
 @import "../../assets/common/mixins";
 .calendar {
+  // display: flex;
+  // flex-direction: column;
   margin: 0 10px;
   position: relative;
   @include media(mobil) {

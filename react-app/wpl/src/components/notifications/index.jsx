@@ -19,8 +19,8 @@ function Notifications() {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         today = yyyy+'-'+mm+'-'+dd;
-        const userInfo=localStorage.getItem("user");
-        const response = await fetch('http://localhost:3000/upcomingAppointments?day='+today+'&student_id='+userInfo);
+        const localstorage_user = JSON.parse(localStorage.getItem("user"));
+        const response = await fetch('http://localhost:3001/upcomingAppointments?day='+today+'&studentId='+localstorage_user._id);
       const jsonData = await response.json();
         console.log('jsonData'+(JSON.stringify(jsonData)));
         setAppointments(jsonData);
@@ -81,7 +81,7 @@ function Notifications() {
           console.log('tomorrow.getHours()' +tomorrowHour);
           if((tomorrow.getDate() === selectedDate && startHour >= tomorrowHour) ||(selectedDate > tomorrow.getDate() )) {
             
-            const res = fetch('http://localhost:3000/appointments/'+props._id, { method: 'DELETE' });
+            const res = fetch('http://localhost:3001/appointments/'+props._id, { method: 'DELETE' });
               if(res.status == 'ok')
                 alert('your appointment has been deleted successfully');
                 setFetchAppointment(true);

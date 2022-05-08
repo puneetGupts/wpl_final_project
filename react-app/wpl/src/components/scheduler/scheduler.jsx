@@ -8,7 +8,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import Modal from "react-bootstrap/Modal";
 import styles from './style.module.scss';
-import { TimePicker } from 'antd';
+// import { TimePicker } from 'antd';
 
 
 
@@ -27,7 +27,7 @@ export default class Scheduler extends Component {
   }
   componentDidMount = () => {
     console.log("component did mount");
-    const response = fetch('http://localhost:3000/appointments')
+    const response = fetch('http://localhost:3001/appointments')
     .then( response => response.json())
     .then((data) => {
       this.setState({DBEvents : data});
@@ -162,7 +162,7 @@ export default class Scheduler extends Component {
     console.log("selected Time" + this.state.selectInfo.startStr);
 
       try {
-          const response = await fetch(`http://localhost:3000/appointments/?day=${this.state.selectInfo.startStr}`);
+          const response = await fetch(`http://localhost:3001/appointments/?day=${this.state.selectInfo.startStr}`);
           const jsonData = await response.json();
           console.log(jsonData.length);
           for(var i = 0; i < jsonData.length; i++){
@@ -218,7 +218,7 @@ export default class Scheduler extends Component {
 
     try {
 
-      fetch(`http://localhost:3000/appointments`, {
+      fetch(`http://localhost:3001/appointments`, {
         method:  'POST',
         body: JSON.stringify({
             title: document.getElementById("meetingDetail").value,

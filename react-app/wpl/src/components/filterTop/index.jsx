@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink ,Link} from 'react-router-dom';
+import { NavLink ,Link,useLocation} from 'react-router-dom';
 import classNames from "classnames";
 import styles from "./style.module.scss"
 
 
-function FilterTop({ handleKeyUp, status }) {
-  return (
+function FilterTop({handleKeyUp, status}) {
+    return (
     <div className={styles.filter_top}>
       <div className={styles.tutors_tab}>
         <p>Find a Tutor</p>
