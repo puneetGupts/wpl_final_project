@@ -13,6 +13,8 @@ var upAppRouter = require("./routes/upcomingAppointments");
 
 var favouritesRouter = require("./routes/favourites");
 var upAppRouter = require("./routes/upcomingAppointments");
+var tutorAppRouter = require("./routes/tutorUpcomingAppointments");
+var totalHoursAppROuter = require("./routes/calculateTotalHours");
 var app = express();
 
 // view engine setup
@@ -30,6 +32,8 @@ app.use("/users", usersRouter);
 app.use("/tutors", tutorsRouter);
 app.use("/appointments", appointmentsRouter);
 app.use("/upcomingAppointments", upAppRouter);
+app.use("/tutorUpcomingAppointments", tutorAppRouter);
+app.use("/calculateTotalHours", totalHoursAppROuter);
 app.use("/favourites", favouritesRouter);
 app.use("/reviews", reviews);
 

@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styles from "./style.module.scss";
 import Reviews from "../reviews";
 function PersonalityInfo({ about, language,teachingStyle,workEx,education,certification,tutor,reviews }) {
+  const localstorage_user = JSON.parse(localStorage.getItem("user"));
+  console.log(localstorage_user);
+  const istutor = localstorage_user.isTutor;
+
   return (
     <div className={styles.list_wrapper}>
       <div className={styles.list}>
@@ -28,7 +32,10 @@ function PersonalityInfo({ about, language,teachingStyle,workEx,education,certif
         <h3>Certifications</h3>
         <p >{certification}</p>
       </div>
-      <Reviews tutor={tutor} reviews={reviews}></Reviews> 
+      { !istutor?  (
+                <Reviews tutor={tutor} reviews={reviews}></Reviews> 
+            ): < ></>} 
+      
     </div>
   );
 }

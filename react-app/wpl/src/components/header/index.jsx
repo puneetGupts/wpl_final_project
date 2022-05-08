@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import { NavLink ,Link} from "react-router-dom";
 import CamblyConstants from '../../constant/camblyConstant';
 import styles from "./style.module.scss";
@@ -14,7 +14,12 @@ import shortid from "shortid";
 
 
 function Header({}) {
+  //const [istutor, setTutor] = useState(false);
+  const localstorage_user = JSON.parse(localStorage.getItem("user"));
+  console.log(localstorage_user);
+  const istutor = localstorage_user.isTutor;
 
+  
     return (
       <header className={styles.header}>
         <ContainerFluid>
@@ -29,8 +34,15 @@ function Header({}) {
               <HeaderNav />
             </div>
             <div className={styles.right_side}>
-              <InfoPlan />
-              <Notifications />
+            {/* { isTutor (
+                <InfoPlan />
+            )} */}
+            { !istutor?  (
+                <InfoPlan />
+            ): < ></>} 
+             { !istutor?  (
+                <Notifications />
+            ): < ></>} 
               <ProfileButton id={1}/>
             </div>
           </div>
