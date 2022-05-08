@@ -233,7 +233,9 @@ export default class Scheduler extends Component {
             slot: timeSlot,
             date: this.state.selectInfo.startStr,
             studentId : localstorage_user._id,
-            tutorId: "123"
+            studentName: localstorage_user.username,
+            tutorId: "123",
+            tutorName: "Nirali"
 
         }), 
         headers: {
