@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import styles from './style.module.scss';
 import { useParams } from 'react-router-dom'
 // import { TimePicker } from 'antd';
+import Header from "../header";
 
 
 
@@ -61,6 +62,8 @@ export default class Scheduler extends Component {
     
 
     return (
+      <>
+      <Header/>
       <div className='styles.demo-app'>
         <div className='styles.demo-app-main'>
           <FullCalendar
@@ -140,6 +143,7 @@ export default class Scheduler extends Component {
 
 
       </div>
+      </>
     )
   }
 
