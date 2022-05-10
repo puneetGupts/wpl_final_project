@@ -8,7 +8,7 @@ var collection = db.get("appointments");
 
 router.get("/", function (req, res) {
   console.log("Request Parameter  >> " + req.query.day);
-  collection.find({ date: req.query.day }, function (err, appointments) {
+  collection.find({ date: req.query.day, tutorId : req.query.tutorId }, function (err, appointments) {
     if (err) throw err;
     res.json(appointments);
   });
