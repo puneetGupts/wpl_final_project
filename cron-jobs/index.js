@@ -45,7 +45,7 @@ const start = async function (a, b) {
     },
   });
 
-  cron.schedule("* * 23 * * *", () => {
+  cron.schedule("* * * * * *", () => {
     console.log("sending email");
     var htmlTemplate = "";
 

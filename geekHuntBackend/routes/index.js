@@ -23,10 +23,11 @@ router.get("/welcome", auth, function (req, res) {
 router.post("/register", function (req, res) {
   let { username, email, password, pic, isTutor } = req.body;
   if (!(username && email && password && pic && !isTutor)) {
-    res.json({ error: "All fields are required!" });
+    res.status(400).send({ msg: "All fields are required!" });
   } else {
     collection.findOne({ email: email }, function (err, user) {
-      if (err) throw err;
+      if (err)
+        res.status(400).send({ msg: "User already exists. Please login!" });
 
       if (user) {
         res.status(400).send({ msg: "User already exists. Please login!" });

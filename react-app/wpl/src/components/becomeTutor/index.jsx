@@ -121,17 +121,20 @@ console.log(formErrorsForm);
       })})  
       const response = await registerResponse.json();
       if (registerResponse.status===201) {
+
         setShow(false);
         setIsSubmit(true);
         // var retrievedObject = localStorage.getItem('user').isTutor;
         localstorage_user.isTutor=true;
         localStorage.setItem('user', JSON.stringify(localstorage_user));
+        navigate(`/tutorHome/${localstorage_user._id}`);
+
         // localStorage.setItem('', testObject);
         // navigate("/studentHome");
 
         // setLoading(false);
         setFormValues(params);
-        window.location.reload();
+        // window.location.reload();
 
 
       }}else{
@@ -216,11 +219,7 @@ console.log(formErrorsForm);
     <Header/>
     {/* <div> */}
     <ContainerFluid>
-      {Object.keys(FormErrors).length === 0 && isSubmit ? (
-        <div>Signed in successfully</div>
-      ) : (
-        <pre>{JSON.stringify(FormValues, undefined, 2)}</pre>
-      )}
+
 
       <h1>Become a Mentor Form</h1>
         {/* {loading && <Loading/>} */}
