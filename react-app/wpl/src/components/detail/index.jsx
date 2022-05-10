@@ -28,6 +28,8 @@ function Detail() {
       .then((res) => res.json())
       .then((data) => {
         setTutor(data);
+
+        localStorage.setItem("cachedSelectedTutor", JSON.stringify(data));
       })
       .catch((error) => {
         console.log(error.message);

@@ -11,6 +11,9 @@ function CalendarInfo({tutor}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
+
+    const localStorage_tutor = JSON.parse(localStorage.getItem("cachedTutors"));
+    console.log("Nirali>>localStorage_tutor"+localStorage_tutor);
     const checkIfClickedOutside = (e) => {
       if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
         setIsMenuOpen(false);
