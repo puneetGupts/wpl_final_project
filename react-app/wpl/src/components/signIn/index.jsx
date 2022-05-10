@@ -21,7 +21,6 @@ function SignIn() {
       var isTutor=JSON.parse(userInfo).isTutor;
       var tutorId=JSON.parse(userInfo)._id;
 
-      // console.log("Hiiiiiiiiiiiiiiiiii");
       if(isTutor){
         navigate(`tutorHome/${tutorId}`);
       }else

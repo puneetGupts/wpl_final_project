@@ -25,7 +25,7 @@ function Register() {
   const [formValues, setFormValues] = useState(params);
   const [formErrors, setFormErrors] = useState({});
   const [error, setError] = useState(false);
-  // const[loading,setLoading]=useState(false);
+  const[loading,setLoading]=useState(false);
   const [IsSubmit, setIsSubmit] =  useState(false);
   // const [IsSubmitSuccess, setIsSubmitSuccess] =  useState(false);
 
@@ -43,10 +43,12 @@ function Register() {
 
 
   const onSubmitForm = async  (e)=>{
-    console.log(formErrors)
+    // console.log(formErrors)
       e.preventDefault();
       setFormErrors(validate(formValues));
+      var formErrorsForm=validate(formValues);
       try {
+        if (Object.keys(formErrorsForm).length ===0 && !IsSubmit) {
 
       const registerResponse = await fetch(`http://localhost:3001/register`,{
         method: "POST",
@@ -59,21 +61,35 @@ function Register() {
             isTutor:false
     })})  
     const response = await registerResponse.json();
+    console.log(IsSubmit)
     if (registerResponse.status===201) {
-      setShow(false);
+
+      setShow(true);
       setIsSubmit(true);
+      setLoading(false);
+      setError(response.msg);
       setFormValues(params);
+      // window.location.reload();
+
     }
     if (registerResponse.status === 400) {
       setIsSubmit(false);
-      setError(error);
+      setLoading(false);
+      // setError(error);
+      setShow(true);
+      setFormValues(params);
       setError(response.msg);
 
     }
+
+  }
 }
 catch (error) {
     // console.error(error.message);
     setError(error);
+    // setShow(true);
+
+        setLoading(false)
   }
     };
   
@@ -129,10 +145,10 @@ catch (error) {
     {/* {Object.keys(formErrors).length === 0 && IsSubmit ? (<div className="success">Signed in successfully</div>) : (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>)} */}
 
         <h1>Register</h1>
-        {/* {loading && <Loading/>} */}
+        {loading && <Loading/>}
         <Form onSubmit={onSubmitForm}>
         {(error && show  &&<ErrorMessage variant="danger" showCross={setShow} shows={show} >{error} </ErrorMessage>)}
-          {/* {IsSubmitSuccess && show  && <ErrorMessage variant="success" showCross={setShow} shows={show} >{"Registered Successfully"}</ErrorMessage>} */}
+          {IsSubmit && !loading && show  && <ErrorMessage variant="success" showCross={setShow} shows={show} >{"Registered Successfully"}</ErrorMessage>}
           <Form.Group as={Col}>
               <Form.Label>Name</Form.Label>
               <Form.Control 
