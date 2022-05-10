@@ -167,11 +167,15 @@ export default class Scheduler extends Component {
     )
   }
   showAvailableTime = async() =>{
-    console.log("function called");
-    console.log("selected Time" + this.state.selectInfo.startStr);
+    const localStorage_tutor = JSON.parse(localStorage.getItem("cachedSelectedTutor"));
+      var tId = null; 
+      
+      Object.keys(localStorage_tutor).forEach(e => 
+        tId = localStorage_tutor[e]._id);
+
 
       try {
-          const response = await fetch(`http://localhost:3001/appointments/?day=${this.state.selectInfo.startStr}`);
+          const response = await fetch(`http://localhost:3001/appointments/?day=${this.state.selectInfo.startStr}&tutorId=${tId}`);
           const jsonData = await response.json();
           console.log(jsonData.length);
           for(var i = 0; i < jsonData.length; i++){
@@ -226,9 +230,20 @@ export default class Scheduler extends Component {
     }
 
     try {
-      console.log('nirali>>tutorId'+JSON.stringify(this.props));
       const localstorage_user = JSON.parse(localStorage.getItem("user"));
       console.log(localstorage_user);
+      const localStorage_tutor = JSON.parse(localStorage.getItem("cachedSelectedTutor"));
+      console.log("tutor id "+Object.values(localStorage_tutor));
+      console.log("nir>>localStorage_tutor"+JSON.stringify(localStorage_tutor));
+      var tId = null; 
+      var tName = null;
+      
+      Object.keys(localStorage_tutor).forEach(e => 
+        tId = localStorage_tutor[e]._id);
+        Object.keys(localStorage_tutor).forEach(e => 
+          tName = localStorage_tutor[e].name);
+
+
       //const tutorId = localstorage_user.tutorId;
         fetch(`http://localhost:3001/appointments`, {
         method:  'POST',
@@ -238,8 +253,8 @@ export default class Scheduler extends Component {
             date: this.state.selectInfo.startStr,
             studentId : localstorage_user._id,
             studentName: localstorage_user.username,
-            tutorId: "123",
-            tutorName: "Nirali"
+            tutorId: tId,
+            tutorName: tName
 
         }), 
         headers: {
