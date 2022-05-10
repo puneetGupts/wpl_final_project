@@ -1,15 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
-import bell from "../../images/bell.png";
-import tick from "../../images/tick.png";
-import styles from "./style.module.scss";
+import React, { useState, useEffect } from "react";
+import Navbar from "../navbar";
+import Header from "../header"
 
-function Notifications() {
-
-    const ref = useRef();
+function TutorUpcomingAppointment () {
+  
     const [appointments, setAppointments] = useState([]);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [fetchAppointment, setFetchAppointment] = useState(false);
+
+
     useEffect(() => {
      
     async function getAppointments() {
@@ -20,7 +17,10 @@ function Notifications() {
         var yyyy = today.getFullYear();
         today = yyyy+'-'+mm+'-'+dd;
         const localstorage_user = JSON.parse(localStorage.getItem("user"));
-        const response = await fetch('http://localhost:3001/upcomingAppointments?day='+today+'&studentId='+localstorage_user._id);
+        console.log(localstorage_user);
+        const tutorId = localstorage_user._id;
+          console.log("nirali>> tutorId"+tutorId);
+      const response = await fetch('http://localhost:3001/tutorUpcomingAppointments?day='+today+'&tutorId='+tutorId);
       const jsonData = await response.json();
         console.log('jsonData'+(JSON.stringify(jsonData)));
         setAppointments(jsonData);
@@ -36,19 +36,8 @@ function Notifications() {
 
 
         getAppointments();
-      const checkIfClickedOutside = (e) => {
-        if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
-          setIsMenuOpen(false);
-        }
-      };
-  
-      document.addEventListener("mousedown", checkIfClickedOutside);
       
-
-      return () => {
-        document.removeEventListener("mousedown", checkIfClickedOutside);
-      };
-    }, [isMenuOpen, fetchAppointment]);
+    }, [ ]);
     
    
     function deleteAppointment(props) {
@@ -82,9 +71,9 @@ function Notifications() {
           if((tomorrow.getDate() === selectedDate && startHour >= tomorrowHour) ||(selectedDate > tomorrow.getDate() )) {
             
             const res = fetch('http://localhost:3001/appointments/'+props._id, { method: 'DELETE' });
+            
               if(res.status == 'ok')
                 alert('your appointment has been deleted successfully');
-                setFetchAppointment(true);
                 window.location.reload();
             
           } else {
@@ -102,36 +91,32 @@ function Notifications() {
   
     }
     } 
-    
-  return (
-    <div className={styles.notification}>
-      <div onClick={() =>  setIsMenuOpen(true)} className={styles.bell}>
-        <img src={bell} alt="bell icon" width={20} height={20} />
-      </div>
-      {isMenuOpen && (
-        <div className={styles.notification_info} ref={ref}>
-          <div>
-        <h1>Upcoming Appointments</h1>
+    return (
+      <>
+       <Header/>
+        <div>
+          
+        <h1>Upcoming Appointments With Students</h1>
         { appointments.map( (appointment,id) => (
-          <div className="card" key={ id }>
-  <div className="card-body">
-    <h5 className="card-title">Title: { appointment.title }</h5>
-    <h6 className="card-subtitle mb-2 text-muted">Tutor Name : { appointment.tutorName } </h6>
-    <h6 className="card-subtitle mb-2 text-muted">Date : { appointment.date } </h6>
-    <p className="card-text">Time : { appointment.slot } </p>
-    <i key = {appointment._id}>
-    <button name ="delete" onClick={()=>{deleteAppointment(appointment)}}/>
-    </i>
-  </div>
-  </div>
-))}
 
-       
-
+        <div className="card" key={ id }>
+          <div className="card-body">
+            <h5 className="card-title">Appointment Title : { appointment.title }</h5>
+            <h6 className="card-subtitle mb-2 text-muted">Student Name : { appointment.studentName } </h6>
+            <h6 className="card-subtitle mb-2 text-muted">Date : { appointment.date } </h6>
+            <p className="card-text">Time : { appointment.slot } </p>
+            <i key = {appointment._id}>
+            <button name ="delete" onClick={()=>{deleteAppointment(appointment)}}/>
+            </i>
         </div>
         </div>
-      )}
-    </div>  );
+        ))}
+      </div>
+    </>
+      );
+
 }
 
-export default Notifications
+
+export default TutorUpcomingAppointment;
+

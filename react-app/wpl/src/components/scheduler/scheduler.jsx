@@ -8,12 +8,14 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import Modal from "react-bootstrap/Modal";
 import styles from './style.module.scss';
+import { useParams } from 'react-router-dom'
 // import { TimePicker } from 'antd';
+import Header from "../header";
 
 
 
 export default class Scheduler extends Component {
-  
+ 
   state = {
     weekendsVisible: true,
     currentEvents: [],
@@ -24,8 +26,12 @@ export default class Scheduler extends Component {
     selectInfo:[],
     time: '10:00 AM',
     DBEvents:[],
+    
   }
   componentDidMount = () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const id = queryParams.get('id');
+    console.log("id "+id);
     console.log("component did mount");
     const response = fetch('http://localhost:3001/appointments')
     .then( response => response.json())
@@ -56,6 +62,8 @@ export default class Scheduler extends Component {
     
 
     return (
+      <>
+      <Header/>
       <div className='styles.demo-app'>
         <div className='styles.demo-app-main'>
           <FullCalendar
@@ -135,6 +143,7 @@ export default class Scheduler extends Component {
 
 
       </div>
+      </>
     )
   }
 
@@ -217,13 +226,20 @@ export default class Scheduler extends Component {
     }
 
     try {
-
-      fetch(`http://localhost:3001/appointments`, {
+      console.log('nirali>>tutorId'+JSON.stringify(this.props));
+      const localstorage_user = JSON.parse(localStorage.getItem("user"));
+      console.log(localstorage_user);
+      //const tutorId = localstorage_user.tutorId;
+        fetch(`http://localhost:3001/appointments`, {
         method:  'POST',
         body: JSON.stringify({
             title: document.getElementById("meetingDetail").value,
             slot: timeSlot,
-            date: this.state.selectInfo.startStr
+            date: this.state.selectInfo.startStr,
+            studentId : localstorage_user._id,
+            studentName: localstorage_user.username,
+            tutorId: "123",
+            tutorName: "Nirali"
 
         }), 
         headers: {

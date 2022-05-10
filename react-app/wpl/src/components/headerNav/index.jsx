@@ -55,7 +55,10 @@ function HeaderNav() {
     
               <NavLink to={item.slug} key={shortid.generate()}>
                 <a>{item.value}</a>
-              </NavLink>: (<NavLink to={`/tutorHome/`+id+`/editTutor`}><a>Edit Profile</a></NavLink>)
+              </NavLink>: (<NavLink to={`/tutorHome/`+id+`/editTutor`}><a>Edit Profile</a>
+              <NavLink to={`/upcomingAppointment`}><a>Upcoming Appointment</a></NavLink>
+              </NavLink>)
+              
     
               
               // (<NavLink to={"/"}><a>{item.value}</a></NavLink>)

@@ -2,9 +2,9 @@ var express = require("express");
 var router = express.Router();
 
 var monk = require("monk");
-var db = monk("localhost:27017/GeekHunt");
+var db = monk("localhost:27017/geekHunt");
 console.log("database" + db);
-var collection = db.get("Appointments");
+var collection = db.get("appointments");
 
 router.get("/", function (req, res) {
   console.log("Request Parameter  >> " + req.query.day);
@@ -30,6 +30,8 @@ router.post("/", function (req, res) {
       date: req.body.date,
       tutorId: req.body.tutorId,
       studentId: req.body.studentId,
+      studentName: req.body.studentName,
+      tutorName: req.body.tutorName,
     },
     function (err, appointments) {
       if (err) throw err;

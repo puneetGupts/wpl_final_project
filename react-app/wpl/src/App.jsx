@@ -10,6 +10,8 @@ import Detail from "./components/detail";
 import Scheduler from "./components/scheduler/scheduler";
 import TutorHome from "./components/tutorHome";
 import EditTutor from "./components/editTutor";
+
+import  UpcomingAppointment from "./components/tutorUpcomingAppointment";
 // import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import {
@@ -34,6 +36,7 @@ function App() {
         <Route exact="true" path="/tutorHome/:id" element={<TutorHome/>} />
         <Route exact="true" path="/tutorHome/:id/editTutor" element={<EditTutor/>} />
         <Route exact="true" path="/schedule" element={<Scheduler/>} />
+        <Route exact="true" path="/upcomingAppointment" element={<UpcomingAppointment/>} />
         
         {/* <Route path="*" element={<Navigate to="/" replace />
         }
